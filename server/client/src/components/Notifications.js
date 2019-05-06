@@ -5,7 +5,7 @@ export class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div style={{ notificationsListStyle }}>
+        <div className="container" style={{ notificationsListStyle }}>
           This is the notifications component
         </div>{' '}
         <Notification />
