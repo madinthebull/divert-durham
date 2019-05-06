@@ -1,46 +1,69 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
-const NavbarBrand = styled.div`
-  font-family: 'Arvo', serif;
-  margin-left: 1%;
-`
-const Button = styled.button`
-  padding: 2%;
-`
-
-const Nav = styled.nav`
-  font-family: 'Arvo', serif;
-`
 export default function Navbar() {
   return (
-    <Nav className="navbar navbar-light fixed-top navbar-expand-lg mb-3 py-1">
+    <div className="navbar fixed-top navbar-expand-lg mb-3" style={navStyle}>
       <div className="container-fluid">
-        <NavbarBrand>Compost Collective</NavbarBrand>{' '}
-        <form className="form-inline ml-auto navbar-right">
+        <div
+          className="col-12"
+          style={{
+            backgroundColor: 'blue',
+            color: 'white',
+            height: '70px'
+          }}
+        >
+          <div
+            className="row"
+            style={{
+              fontSize: '20px',
+              verticalAlign: 'baseline',
+              margin: '3%'
+            }}
+          >
+            Compost Collective
+            <br />
+          </div>
+        </div>
+        <div className="shadow-sm col-12">
           <Link to="/Home">
-            <Button>Home</Button>
+            <button className="col-2" style={buttonStyle}>
+              Home
+            </button>
           </Link>
           <Link to="/Info">
-            <Button>Info</Button>
+            <button className="col-2" style={buttonStyle}>
+              Info
+            </button>
           </Link>
           <Link to="/Notifications">
-            <Button>Notifications</Button>
+            <button className="col-4" style={buttonStyle}>
+              Notifications
+            </button>
           </Link>
           <Link to="/Profile">
-            <Button>Profile</Button>
+            <button className="col-3" style={buttonStyle}>
+              Profile
+            </button>
           </Link>
           <Link to="/Logout">
-            <Button>
+            <button className="col-1" style={buttonStyle}>
               {' '}
               <span role="img" aria-label="waving hand">
                 👋🏽
               </span>
-            </Button>
+            </button>
           </Link>
-        </form>
+        </div>
       </div>
-    </Nav>
+    </div>
   )
+}
+
+const navStyle = {
+  //this isn't working currently
+  fontFamily: 'Merriweather'
+}
+const buttonStyle = {
+  padding: '3px'
 }
