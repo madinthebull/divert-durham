@@ -5,10 +5,17 @@ export class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>This is the notifications component</div> <Notification />
+        <div style={{ notificationsListStyle }}>
+          This is the notifications component
+        </div>{' '}
+        <Notification />
       </React.Fragment>
     )
   }
+}
+
+const notificationsListStyle = {
+  overflowY: 'scroll'
 }
 
 export default Notifications
