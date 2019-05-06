@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madinthebull/divert-durham.git"
+  },
+  "author": "Madeline Streilein",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madinthebull/divert-durham/issues"
+  },
+  "homepage": "https://github.com/madinthebull/divert-durham#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.5"
+  }
+}
