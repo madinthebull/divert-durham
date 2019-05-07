@@ -16,10 +16,18 @@ export class Info extends Component {
           </div>
           <div className="row">
             <div
-              className="col-12"
+              className="col-12 mt-3"
               style={{ backgroundColor: '#ddd', textAlign: 'center' }}
             >
-              What Can I Compost?
+              What Can I Compost? <br />
+              Fruit and vegetable scraps Meat, bones, fish products Pasta,
+              bread, cereal Cooked foods Dairy products, egg shells Coffee
+              grounds, filters, & tea bags Paper towels and paper towel rolls
+              Soiled paper food packaging Paper fast food packaging Pizza boxes
+              Muffin wrappers Flour and sugar bags Paper plates Candies, cookies
+              and cake Baking ingredients, herbs, spices Household plants
+              including soil Pet food Items labeled BPI Certified Compostable
+              Items labeled ASTM D6400 or D6868
             </div>
           </div>
         </div>

@@ -8,15 +8,10 @@ export class Home extends Component {
         <div className="container">
           <div className="col-12">
             <div className="row mb-3">
-              <div
-                className="col-3"
-                style={{
-                  color: 'white',
-                  backgroundColor: '#00548f',
-                  borderRadius: '8px'
-                }}
-              >
-                <div>Step 1:</div>
+              <div className="col-3" style={stepStyle}>
+                <div>
+                  <strong>Step 1:</strong>
+                </div>
               </div>
               <div className="col-9">
                 {' '}
@@ -26,15 +21,10 @@ export class Home extends Component {
           </div>
           <div className="col-12">
             <div className="row mb-3">
-              <div
-                className="col-3"
-                style={{
-                  color: 'white',
-                  backgroundColor: '#00548f',
-                  borderRadius: '8px'
-                }}
-              >
-                <div> Step 2:</div>
+              <div className="col-3" style={stepStyle}>
+                <div>
+                  <strong>Step 2:</strong>
+                </div>
               </div>
               <div className="col-9">
                 {' '}
@@ -44,15 +34,10 @@ export class Home extends Component {
           </div>
           <div className="col-12">
             <div className="row mb-3">
-              <div
-                className="col-3"
-                style={{
-                  color: 'white',
-                  backgroundColor: '#00548f',
-                  borderRadius: '8px'
-                }}
-              >
-                <div>Step 3:</div>
+              <div className="col-3" style={stepStyle}>
+                <div>
+                  <strong>Step 3:</strong>
+                </div>
               </div>
               <div className="col-9">
                 {' '}
@@ -67,4 +52,9 @@ export class Home extends Component {
   }
 }
 
+const stepStyle = {
+  color: '#00548f',
+  backgroundColor: '#c8deea',
+  borderRadius: '8px'
+}
 export default Home

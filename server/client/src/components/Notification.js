@@ -7,7 +7,7 @@ export class Notification extends Component {
         <div
           className="col-10 offset-1 shadow-sm"
           style={{
-            backgroundColor: '#ddd',
+            backgroundColor: '#c8deea',
             borderRadius: '5px',
             padding: '5px',
             marginBottom: '15px'
@@ -26,7 +26,7 @@ export class Notification extends Component {
         <div
           className="col-10 offset-1 shadow-sm"
           style={{
-            backgroundColor: '#ddd',
+            backgroundColor: '#c8deea',
             borderRadius: '5px',
             padding: '5px',
             marginBottom: '15px'
@@ -44,7 +44,7 @@ export class Notification extends Component {
         <div
           className="col-10 offset-1 shadow-sm"
           style={{
-            backgroundColor: '#ddd',
+            backgroundColor: '#c8deea',
             borderRadius: '5px',
             padding: '5px',
             marginBottom: '15px'
@@ -63,7 +63,7 @@ export class Notification extends Component {
         <div
           className="col-10 offset-1 shadow-sm"
           style={{
-            backgroundColor: '#ddd',
+            backgroundColor: '#c8deea',
             borderRadius: '5px',
             padding: '5px',
             marginBottom: '15px'
