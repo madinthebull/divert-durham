@@ -1,11 +1,15 @@
-const app = express()
+const express = require('express')
 const router = require('./router')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const keys = require('./config/keys')
+const bodyParser = require('body-parser')
+const http = require('http')
+
+const app = express()
 
 //DB Setup
-mongoose.connect(keys.MONGODB_URI)
+mongoose.connect(keys.MONGODB_URI, { useNewUrlParser: true })
 
 app.use(cors())
 
