@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
-import SubmitButton from './Button'
+import Button from './Button'
 import Footer from './Footer'
 
 class Profile extends Component {
@@ -86,7 +86,7 @@ class Profile extends Component {
                   readOnly
                 />
                 <div className="form-footer-container">
-                  <SubmitButton />
+                  <Button />
                 </div>
               </form>
             </div>
