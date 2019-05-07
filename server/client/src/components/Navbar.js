@@ -34,7 +34,7 @@ export default function Navbar() {
 
       <div className="col-12">
         <Link to="/Home">
-          <button className="col-2" style={buttonStyle}>
+          <button className="col-3" style={buttonStyle}>
             Home
           </button>
         </Link>
@@ -51,14 +51,6 @@ export default function Navbar() {
         <Link to="/Profile">
           <button className="col-3" style={buttonStyle}>
             Profile
-          </button>
-        </Link>
-        <Link to="/Logout">
-          <button className="col-1" style={buttonStyle}>
-            {' '}
-            <span role="img" aria-label="waving hand">
-              👋🏽
-            </span>
           </button>
         </Link>
       </div>

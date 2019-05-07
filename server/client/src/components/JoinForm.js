@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import SubmitButton from './Button'
 
 export class JoinForm extends Component {
@@ -81,7 +82,9 @@ export class JoinForm extends Component {
                   style={inputStyle}
                 />
                 <div className="form-footer-container">
-                  <SubmitButton />
+                  <Link to="/home">
+                    <button>Submit</button>
+                  </Link>
                 </div>
               </form>
             </div>

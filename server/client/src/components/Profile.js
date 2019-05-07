@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
 import Button from './Button'
+import { Link } from 'react-router-dom'
 import Footer from './Footer'
 
 class Profile extends Component {
@@ -89,6 +90,15 @@ class Profile extends Component {
                   <Button />
                 </div>
               </form>
+              <Link to="/Logout">
+                <button className="col-5">
+                  {' '}
+                  Log Out
+                  <span role="img" aria-label="waving hand">
+                    👋🏽
+                  </span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>
