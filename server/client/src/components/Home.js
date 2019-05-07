@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Map from './Map'
+// import Map from './Map'
 
 export class Home extends Component {
   render() {
@@ -48,9 +48,7 @@ export class Home extends Component {
               </div>
             </div>
           </div>
-          <div style={{ margin: '10px' }}>
-            <Map />
-          </div>
+          <div style={{ margin: '10px' }}>{/* <Map /> */}</div>
         </div>
         <Footer />
       </React.Fragment>

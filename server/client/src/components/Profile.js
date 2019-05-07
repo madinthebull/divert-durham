@@ -106,7 +106,7 @@ class Profile extends Component {
                   <Button />
                 </div>
               </form>
-              <Link to="/Logout">
+              <Link to="/">
                 <button className="col-5">
                   {' '}
                   Log Out
