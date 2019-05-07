@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
       <AppWrapper>
         <Navbar />
-        <div className="container" style={{ marginTop: '150px' }} />
+        <div className="container" style={{ marginTop: '165px' }} />
         <Switch>
           <Route exact path={['/home', '/']} component={Home} />
           <Route exact path={'/info'} component={Info} />

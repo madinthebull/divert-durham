@@ -5,7 +5,7 @@ export class Notification extends Component {
     return (
       <React.Fragment>
         <div
-          className="col-10 offset-1"
+          className="col-10 offset-1 shadow-sm"
           style={{
             backgroundColor: '#ddd',
             borderRadius: '5px',
@@ -19,10 +19,12 @@ export class Notification extends Component {
             <strong>Sean D.</strong> is on his way in <strong>20</strong>{' '}
             minutes!
           </div>
-          <div> -5 days ago</div>
+          <div>
+            <small>-5 days ago</small>
+          </div>
         </div>
         <div
-          className="col-10 offset-1"
+          className="col-10 offset-1 shadow-sm"
           style={{
             backgroundColor: '#ddd',
             borderRadius: '5px',
@@ -35,10 +37,12 @@ export class Notification extends Component {
             {' '}
             <strong>Sean D.</strong> has <strong>delivered!</strong>
           </div>
-          <div> -5 days ago</div>
+          <div>
+            <small> -5 days ago</small>
+          </div>
         </div>
         <div
-          className="col-10 offset-1"
+          className="col-10 offset-1 shadow-sm"
           style={{
             backgroundColor: '#ddd',
             borderRadius: '5px',
@@ -52,10 +56,12 @@ export class Notification extends Component {
             <strong>Aaron H.</strong> is on his way in <strong>5</strong>{' '}
             minutes!
           </div>
-          <div> -15 minutes ago</div>
+          <div>
+            <small>-15 minutes ago</small>
+          </div>
         </div>
         <div
-          className="col-10 offset-1"
+          className="col-10 offset-1 shadow-sm"
           style={{
             backgroundColor: '#ddd',
             borderRadius: '5px',
@@ -68,7 +74,9 @@ export class Notification extends Component {
             {' '}
             <strong>Aaron H.</strong> has <strong>delivered</strong>!
           </div>
-          <div> -10 minutes ago</div>
+          <div>
+            <small> -10 minutes ago</small>
+          </div>
         </div>
       </React.Fragment>
     )

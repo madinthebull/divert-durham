@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import stars from '../static/durhamstars.png'
 export default function Navbar() {
   return (
-    <div className="navbar fixed-top navbar-expand-lg mb-3">
+    <div className="navbar fixed-top navbar-expand-lg mb-3 shadow-sm">
       <div className="container-fluid">
         <div className="row" style={{ backgroundColor: '#00548f' }}>
           <div className="col-1" style={{ backgroundColor: '#ef3e42' }} />
@@ -15,7 +15,9 @@ export default function Navbar() {
               color: 'white',
               textAlign: 'center',
               fontSize: '25px',
-              fontFamily: 'Domine'
+              letterSpacing: '1px',
+              fontFamily: 'Domine',
+              paddingTop: '3%'
             }}
           >
             Divert Durham{' '}
@@ -30,7 +32,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="shadow-sm col-12">
+      <div className="col-12">
         <Link to="/Home">
           <button className="col-2" style={buttonStyle}>
             Home
