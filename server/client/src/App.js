@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Info from './components/Info'
 import Notifications from './components/Notifications'
 import Profile from './components/Profile'
+import Footer from './components/Footer'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components'
@@ -25,6 +26,7 @@ function App() {
           <Route exact path={'/notifications'} component={Notifications} />
           <Route exact path={'/profile'} component={Profile} />
         </Switch>
+        <Footer />
       </AppWrapper>
     </BrowserRouter>
   )

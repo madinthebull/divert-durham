@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import stars from '../static/durhamstars.png'
 export default function Navbar() {
   return (
-    <div className="navbar fixed-top navbar-expand-lg mb-3 shadow-sm">
+    <nav className="navbar fixed-top navbar-expand-lg mb-3 shadow-sm">
       <div className="container-fluid">
         <div className="row" style={{ backgroundColor: '#00548f' }}>
           <div className="col-1" style={{ backgroundColor: '#ef3e42' }} />
@@ -62,10 +62,11 @@ export default function Navbar() {
           </button>
         </Link>
       </div>
-    </div>
+    </nav>
   )
 }
 
 const buttonStyle = {
-  padding: '3px'
+  padding: '3px',
+  marginTop: '3px'
 }
