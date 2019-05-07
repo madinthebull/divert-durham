@@ -24,7 +24,7 @@ module.exports = function(app) {
     })
 
     //Only save if the user doesn't exist yet
-    Giver.findOne({ name: newGiver.name }, function(err, foundGiver) {
+    Giver.findOne({ username: newGiver.username }, function(err, foundGiver) {
       if (!foundGiver) {
         newGiver.save((err, giver) => {
           if (err) {

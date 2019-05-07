@@ -85,7 +85,7 @@ class Profile extends Component {
                 >
                   <button
                     type="button"
-                    class="btn"
+                    className="btn"
                     value={this.state.profileType}
                     name="profileType"
                     style={{ backgroundColor: '#c8deea' }}
@@ -94,7 +94,7 @@ class Profile extends Component {
                   </button>
                   <button
                     type="button"
-                    class="btn"
+                    className="btn"
                     value={this.state.profileType}
                     name="profileType"
                     style={{ backgroundColor: '#c8deea' }}
