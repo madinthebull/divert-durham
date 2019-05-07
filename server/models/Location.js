@@ -2,11 +2,10 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const LocationSchema = new Schema({
-  user: [{ type: Schema.Types.ObjectId, ref: 'user' }],
+  user: { type: Schema.Types.ObjectId, ref: 'user' },
   dropOffInstructions: String,
   isAcceptingCompost: Boolean,
-  homeAddress: { lat: Number, lng: Number },
-  dropOff: { lat: Number, lng: Number }
+  dropOffCoordinates: Object
 })
 
 const Location = mongoose.model('location', LocationSchema)
