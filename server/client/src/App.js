@@ -1,4 +1,5 @@
 import React from 'react'
+import Landing from './components/Landing'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Info from './components/Info'
@@ -25,6 +26,7 @@ function App() {
           <Route exact path={'/info'} component={Info} />
           <Route exact path={'/notifications'} component={Notifications} />
           <Route exact path={'/profile'} component={Profile} />
+          <Route exact path={'/logout'} component={Landing} />
         </Switch>
         <Footer />
       </AppWrapper>
