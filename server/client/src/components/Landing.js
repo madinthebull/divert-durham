@@ -44,14 +44,28 @@ export class Landing extends Component {
   render() {
     return (
       <div className="container">
-        <div> This is the landing page</div>
-        <Hexagon>Divert Durham</Hexagon>
-        <Link to="/login">
-          <Button>Login</Button>
-        </Link>
-        <Link to="/join">
-          <Button onClick={this.onClick}>Join now</Button>
-        </Link>
+        <div style={{ textAlign: 'center' }}> This is the landing page</div>
+        <div className="row">
+          <div className="col-12 offset-4">
+            <Hexagon>Divert Durham</Hexagon>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-12">
+            <div className="row">
+              <div className="col-3 offset-2">
+                <Link to="/login">
+                  <Button>Login</Button>
+                </Link>
+              </div>
+              <div className="col-4 offset-2">
+                <Link to="/join">
+                  <Button onClick={this.onClick}>Join now</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
