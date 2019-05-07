@@ -27,7 +27,6 @@ class Profile extends Component {
               <div className="form-header-container">
                 <div className="form-header">
                   <div className="form-name">edit profile</div>
-                  <div className="fas fa-times" />
                 </div>
               </div>
               <form className="form-field-container">
@@ -78,14 +77,31 @@ class Profile extends Component {
                   style={inputStyle}
                 />
                 <p className="">profile type</p>
-                <input
-                  type="text"
-                  name="profileTyle"
-                  className="form-field"
-                  placeholder="Enter profile Type"
-                  value={this.state.profileType}
+                <div
+                  className="btn-group"
+                  role="group"
+                  aria-label="Choose profile type"
                   readOnly
-                />
+                >
+                  <button
+                    type="button"
+                    class="btn"
+                    value={this.state.profileType}
+                    name="profileType"
+                    style={{ backgroundColor: '#c8deea' }}
+                  >
+                    Giver
+                  </button>
+                  <button
+                    type="button"
+                    class="btn"
+                    value={this.state.profileType}
+                    name="profileType"
+                    style={{ backgroundColor: '#c8deea' }}
+                  >
+                    Reciever
+                  </button>
+                </div>
                 <div className="form-footer-container">
                   <Button />
                 </div>
