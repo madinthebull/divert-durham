@@ -13,7 +13,7 @@ export default function Navbar() {
             style={{
               backgroundColor: '#00548f',
               color: 'white',
-              textAlign: 'center',
+              textAlign: 'right',
               fontSize: '25px',
               letterSpacing: '1px',
               fontFamily: 'Domine',

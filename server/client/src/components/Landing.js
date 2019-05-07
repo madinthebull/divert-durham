@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Hexagon = styled.div`
   width: 100px;
@@ -45,8 +46,12 @@ export class Landing extends Component {
       <div className="container">
         <div> This is the landing page</div>
         <Hexagon>Divert Durham</Hexagon>
-        <Button>Login</Button>
-        <Button>Join now</Button>
+        <Link to="/login">
+          <Button>Login</Button>
+        </Link>
+        <Link to="/join">
+          <Button onClick={this.onClick}>Join now</Button>
+        </Link>
       </div>
     )
   }
