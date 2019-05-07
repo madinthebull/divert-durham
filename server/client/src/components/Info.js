@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
+import Navbar from './Navbar'
+import Footer from './Footer'
 
 export class Info extends Component {
   render() {
     return (
       <React.Fragment>
+        <Navbar />
         <div className="container">
           <div>This is the info component</div>
           <div className="row">
@@ -31,6 +34,7 @@ export class Info extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </React.Fragment>
     )
   }

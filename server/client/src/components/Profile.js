@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import Navbar from './Navbar'
 import SubmitButton from './Button'
+import Footer from './Footer'
 
 class Profile extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class Profile extends Component {
   render() {
     return (
       <React.Fragment>
+        <Navbar />
         <div className="container">
           <div className="mask show" />
           <div className="form-container show">
@@ -89,6 +92,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </React.Fragment>
     )
   }
