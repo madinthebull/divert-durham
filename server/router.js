@@ -4,14 +4,14 @@
 
 // const requireAuth = passport.authenticate('jwt', { session: false })
 // const requireSignin = passport.authenticate('local', { session: false })
-const Giver = require('./models/Giver')
+const User = require('./models/User')
 // const Notification = require('./models/Notification')
 // const Receiver = require('./models/Receiver')
 
 module.exports = function(app) {
   app.post('/join', (req, res) => {
     //create a new Giver in the database
-    let newGiver = new Giver({
+    let newUser = new User({
       username: req.body.username,
       password: req.body.password,
       giverId: req.body.giverId,
@@ -24,17 +24,17 @@ module.exports = function(app) {
     })
 
     //Only save if the user doesn't exist yet
-    Giver.findOne({ username: newGiver.username }, function(err, foundGiver) {
-      if (!foundGiver) {
-        newGiver.save((err, giver) => {
+    User.findOne({ username: newUser.username }, function(err, foundUser) {
+      if (!foundUser) {
+        newUser.save((err, user) => {
           if (err) {
             console.error(err)
           } else {
-            res.send({ success: true, giver: giver })
+            res.send({ success: true, user: user })
           }
         })
       } else {
-        console.error('The giver already exists in the database')
+        console.error('The user already exists in the database')
       }
     })
   })

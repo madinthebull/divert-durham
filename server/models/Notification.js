@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 const NotificationSchema = new Schema({
   onWay: Boolean,
   delivered: Boolean,
-  giver: { type: Schema.Types.ObjectId, ref: 'giver' },
-  receive: { type: Schema.Types.ObjectId, ref: 'receiver' },
+  giverId: { type: Schema.Types.ObjectId, ref: 'user' },
+  receiverId: { type: Schema.Types.ObjectId, ref: 'user' },
   timeSent: Number
 })
 
