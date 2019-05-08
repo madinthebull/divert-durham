@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReceiverDetailView from './ReceiverDetailView'
 import {
   Map,
   GoogleApiWrapper,
@@ -69,7 +68,6 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
-          <ReceiverDetailView />
           <div>
             <h4>{this.state.selectedPlace.name}</h4>
           </div>
