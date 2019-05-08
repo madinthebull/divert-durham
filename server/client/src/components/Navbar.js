@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 import stars from '../static/durhamstars.png'
 export default function Navbar() {
   return (
-    <nav className="navbar fixed-top navbar-expand-lg mb-3 shadow-sm">
+    <nav
+      className="navbar fixed-top navbar-expand-lg mb-3 shadow-sm"
+      style={{ backgroundColor: 'white' }}
+    >
       <div className="container-fluid">
         <div className="row" style={{ backgroundColor: '#00548f' }}>
           <div className="col-1" style={{ backgroundColor: '#ef3e42' }} />

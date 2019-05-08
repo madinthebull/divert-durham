@@ -53,16 +53,8 @@ export class MapContainer extends Component {
         style={mapStyles}
         initialCenter={coords}
       >
-        {/* <Circle
-          radius={800}
-          center={coords}
-          strokeColor="transparent"
-          strokeOpacity={0}
-          strokeWeight={5}
-          fillColor="#055c32"
-          fillOpacity={0.2}
-        /> */}
         <Marker onClick={this.onMarkerClick} name={'your home'} />
+
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}

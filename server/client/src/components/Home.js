@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-// import Map from './Map'
-import ReceiverDetailView from './ReceiverDetailView'
+import Map from './Map'
+// import ReceiverDetailView from './ReceiverDetailView'
 
 export class Home extends Component {
   render() {
@@ -10,7 +10,7 @@ export class Home extends Component {
       <React.Fragment>
         <Navbar />
         <div className="container">
-          <ReceiverDetailView />
+          {/* <ReceiverDetailView /> */}
           <div className="col-12">
             <div className="row mb-3">
               <div className="col-3" style={stepStyle}>
@@ -50,7 +50,9 @@ export class Home extends Component {
               </div>
             </div>
           </div>
-          <div style={{ margin: '10px' }}>{/* <Map /> */}</div>
+          <div style={{ margin: '10px' }}>
+            <Map />
+          </div>
         </div>
         <Footer />
       </React.Fragment>
