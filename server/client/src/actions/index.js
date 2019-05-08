@@ -36,7 +36,7 @@ export function convertAddress(address) {
 }
 // for reverse geocoding when a user creates their profile
 export function convertCoordinates(coordinates) {
-  const request = axios.get(`${REVGEO_URL}latlng=${coordinates}&key=${apiKey}`)
+  const request = axios.get(`${GEO_URL}latlng=${coordinates}&key=${apiKey}`)
 
   return {
     type: CONVERT_COORDINATES,
