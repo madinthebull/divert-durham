@@ -6,6 +6,7 @@
 // const requireSignin = passport.authenticate('local', { session: false })
 const User = require('./models/User')
 const Location = require('./models/Location')
+const Notification = require('./models/Notification')
 
 // const Notification = require('./models/Notification')
 // const Receiver = require('./models/Receiver')
@@ -55,6 +56,18 @@ module.exports = function(app) {
         console.error('The user already exists in the database')
       }
     })
+  })
+  // app.get('/notifications', (req, res, next) => {
+  //   Notification.find({})
+  //   .populate('user')
+  //   .exec((err, users) => {
+  //     if (err) {
+  //       console.error(err)
+  //     } else {
+  //         res.send(notifications)
+  //     }
+  //   })
+  
   })
   app.post('/auth/signin')
   app.post('/auth/signup')
