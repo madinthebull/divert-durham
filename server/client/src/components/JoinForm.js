@@ -1,110 +1,192 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import SubmitButton from './Button'
+import { createUser } from '../actions/index'
+import { ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 export class JoinForm extends Component {
   state = {
     username: '',
+    password: '',
     email: '',
     firstName: '',
     lastName: '',
-    address: '',
-    profileType: ''
+    homeAddress: '',
+    dropOffInstructions: '',
+    isAcceptingCompost: '',
+    dropOffCoordinates: ''
+  }
+
+  // as data is entered, capture in the state
+  onInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
+  // on submit, send POST request to server
+  onFormSubmit = e => {
+    const {
+      username,
+      password,
+      email,
+      firstName,
+      lastName,
+      homeAddress,
+      dropOffInstructions,
+      isAcceptingCompost,
+      dropOffCoordinates
+    } = this.state
+
+    const newUserData = {
+      username,
+      password,
+      email,
+      firstName,
+      lastName,
+      homeAddress,
+      dropOffInstructions,
+      isAcceptingCompost,
+      dropOffCoordinates
+    }
+
+    this.props.createUser(newUserData)
+
+    // reset form
+    this.setState({
+      username: '',
+      password: '',
+      email: '',
+      firstName: '',
+      lastName: '',
+      homeAddress: '',
+      dropOffInstructions: '',
+      isAcceptingCompost: '',
+      dropOffCoordinates: ''
+    })
+
+    e.preventDefault()
   }
   render() {
     return (
       <React.Fragment>
-        <div className="container">
-          <div>This is the join form component</div>
-          <div className="mask show" />
-          <div className="form-container show">
-            <div className="form-card show">
-              <div className="form-header-container">
-                <div className="form-header">
-                  <div className="form-name">edit profile</div>
-                </div>
+        <ModalHeader>
+          <div className="form-name">Join Divert Durham</div>
+        </ModalHeader>
+        <ModalBody>
+          <div className="container">
+            <form className="form-field-container" onSubmit={this.onFormSubmit}>
+              {' '}
+              <label for="username">Username</label>
+              {/* <p className="">Username</p> */}
+              <input
+                type="text"
+                name="username"
+                className="form-control"
+                placeholder="Enter user name"
+                value={this.state.username}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                className="form-control"
+                placeholder="Enter email address"
+                value={this.state.email}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                name="firstName"
+                className="form-control"
+                placeholder="Enter first name"
+                value={this.state.firstName}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                name="lastName"
+                className="form-control"
+                placeholder="Enter last name"
+                value={this.state.lastName}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <label for="homeAddress">Home Address</label>
+              <input
+                type="text"
+                name="homeAddress"
+                className="form-control"
+                placeholder="Enter address"
+                value={this.state.homeAddress}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <hr />
+              <div>
+                Only fill out the next section If you would like to be a
+                receiver
               </div>
-              <form className="form-field-container">
-                {' '}
-                <p className="">Username</p>
-                <input
-                  type="text"
-                  name="username"
-                  className="form-field"
-                  placeholder="Enter user name"
-                  value={this.state.username}
-                  style={inputStyle}
-                />
-                <p className="">email address</p>
-                <input
-                  type="email"
-                  name="email"
-                  className="form-field"
-                  placeholder="Enter email address"
-                  value={this.state.email}
-                  style={inputStyle}
-                />
-                <p className="">first name</p>
-                <input
-                  type="text"
-                  name="firstName"
-                  className="form-field"
-                  placeholder="Enter first name"
-                  value={this.state.firstName}
-                  style={inputStyle}
-                />
-                <p className="">last name</p>
-                <input
-                  type="text"
-                  name="lastName"
-                  className="form-field"
-                  placeholder="Enter last name"
-                  value={this.state.lastName}
-                  style={inputStyle}
-                />
-                <p className="">home address</p>
-                <input
-                  type="text"
-                  name="address"
-                  className="form-field"
-                  placeholder="Enter address"
-                  value={this.state.address}
-                  style={inputStyle}
-                />
-                <p className="">profile type</p>
-                <div
-                  className="btn-group"
-                  role="group"
-                  aria-label="Choose profile type"
+              <label for="dropOffCoordinates">Drop off Location</label>
+              <input
+                type="text"
+                name="dropOffCoordinates"
+                className="form-control"
+                placeholder="Enter address where you'd like scraps to be dropped off"
+                value={this.state.dropOffCoordinates}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <label for="dropOffInstructions">Drop Off Instructions</label>
+              <textarea
+                rows="5"
+                name="dropOffInstructions"
+                className="form-control"
+                placeholder="Enter drop off instructions"
+                value={this.state.dropOffInstructions}
+                style={inputStyle}
+                onChange={this.onInputChange}
+              />
+              <p className="">Want to receive food scrap donations now?</p>
+              <div
+                className="btn-group"
+                role="group"
+                aria-label="Actively accepting compost"
+              >
+                <button
+                  type="button"
+                  className="btn"
+                  value={this.state.isAcceptingCompost}
+                  name="true"
+                  style={{ backgroundColor: '#c8deea' }}
+                  onChange={this.onInputChange}
                 >
-                  <button
-                    type="button"
-                    className="btn"
-                    value={this.state.profileType}
-                    name="profileType"
-                    style={{ backgroundColor: '#c8deea' }}
-                  >
-                    Giver
-                  </button>
-                  <button
-                    type="button"
-                    className="btn"
-                    value={this.state.profileType}
-                    name="profileType"
-                    style={{ backgroundColor: '#c8deea' }}
-                  >
-                    Reciever
-                  </button>
-                </div>
-                <div className="form-footer-container">
-                  <Link to="/home">
-                    <button>Submit</button>
-                  </Link>
-                </div>
-              </form>
-            </div>
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  className="btn"
+                  value={this.state.isAcceptingCompost}
+                  name="false"
+                  style={{ backgroundColor: '#c8deea' }}
+                  onChange={this.onInputChange}
+                >
+                  No
+                </button>
+              </div>
+              <div className="form-footer-container">
+                <Link to="/home">
+                  <button>Submit</button>
+                </Link>
+              </div>
+            </form>
           </div>
-        </div>
+        </ModalBody>
       </React.Fragment>
     )
   }
@@ -115,4 +197,12 @@ const inputStyle = {
   borderRadius: '5px'
 }
 
-export default JoinForm
+const mapDispatchToProps = dispatch => {
+  return {
+    createUser: userData => dispatch(createUser(userData))
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(JoinForm)
