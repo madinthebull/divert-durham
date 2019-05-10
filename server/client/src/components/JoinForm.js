@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SubmitButton from './Button'
 import { createUser } from '../actions/index'
-import { ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
 export class JoinForm extends Component {
   state = {
@@ -69,124 +68,118 @@ export class JoinForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <ModalHeader>
+        <div className="container">
           <div className="form-name">Join Divert Durham</div>
-        </ModalHeader>
-        <ModalBody>
-          <div className="container">
-            <form className="form-field-container" onSubmit={this.onFormSubmit}>
-              {' '}
-              <label for="username">Username</label>
-              {/* <p className="">Username</p> */}
-              <input
-                type="text"
-                name="username"
-                className="form-control"
-                placeholder="Enter user name"
-                value={this.state.username}
-                style={inputStyle}
+          <form className="form-field-container" onSubmit={this.onFormSubmit}>
+            {' '}
+            <p>Username</p>
+            <input
+              type="text"
+              name="username"
+              className="form-control"
+              placeholder="Enter user name"
+              value={this.state.username}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p>Email Address</p>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              placeholder="Enter email address"
+              value={this.state.email}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p>FIrst Name</p>
+            <input
+              type="text"
+              name="firstName"
+              className="form-control"
+              placeholder="Enter first name"
+              value={this.state.firstName}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p>Last Name</p>
+            <input
+              type="text"
+              name="lastName"
+              className="form-control"
+              placeholder="Enter last name"
+              value={this.state.lastName}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p>Home Address</p>
+            <input
+              type="text"
+              name="homeAddress"
+              className="form-control"
+              placeholder="Enter address"
+              value={this.state.homeAddress}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <hr />
+            <div>
+              Only fill out the next section If you would like to be a receiver
+            </div>
+            <p>Drop Off Location</p>
+            <input
+              type="text"
+              name="dropOffCoordinates"
+              className="form-control"
+              placeholder="Enter address where you'd like scraps to be dropped off"
+              value={this.state.dropOffCoordinates}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p>Drop Off Instructions</p>
+            <textarea
+              rows="5"
+              name="dropOffInstructions"
+              className="form-control"
+              placeholder="Enter drop off instructions"
+              value={this.state.dropOffInstructions}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p className="">Want to receive food scrap donations now?</p>
+            <div
+              className="btn-group"
+              role="group"
+              aria-label="Actively accepting compost"
+            >
+              <button
+                type="button"
+                className="btn"
+                value={this.state.isAcceptingCompost}
+                name="true"
+                style={{ backgroundColor: '#c8deea' }}
                 onChange={this.onInputChange}
-              />
-              <label for="email">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                className="form-control"
-                placeholder="Enter email address"
-                value={this.state.email}
-                style={inputStyle}
-                onChange={this.onInputChange}
-              />
-              <label for="firstName">First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                className="form-control"
-                placeholder="Enter first name"
-                value={this.state.firstName}
-                style={inputStyle}
-                onChange={this.onInputChange}
-              />
-              <label for="lastName">Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                className="form-control"
-                placeholder="Enter last name"
-                value={this.state.lastName}
-                style={inputStyle}
-                onChange={this.onInputChange}
-              />
-              <label for="homeAddress">Home Address</label>
-              <input
-                type="text"
-                name="homeAddress"
-                className="form-control"
-                placeholder="Enter address"
-                value={this.state.homeAddress}
-                style={inputStyle}
-                onChange={this.onInputChange}
-              />
-              <hr />
-              <div>
-                Only fill out the next section If you would like to be a
-                receiver
-              </div>
-              <label for="dropOffCoordinates">Drop off Location</label>
-              <input
-                type="text"
-                name="dropOffCoordinates"
-                className="form-control"
-                placeholder="Enter address where you'd like scraps to be dropped off"
-                value={this.state.dropOffCoordinates}
-                style={inputStyle}
-                onChange={this.onInputChange}
-              />
-              <label for="dropOffInstructions">Drop Off Instructions</label>
-              <textarea
-                rows="5"
-                name="dropOffInstructions"
-                className="form-control"
-                placeholder="Enter drop off instructions"
-                value={this.state.dropOffInstructions}
-                style={inputStyle}
-                onChange={this.onInputChange}
-              />
-              <p className="">Want to receive food scrap donations now?</p>
-              <div
-                className="btn-group"
-                role="group"
-                aria-label="Actively accepting compost"
               >
-                <button
-                  type="button"
-                  className="btn"
-                  value={this.state.isAcceptingCompost}
-                  name="true"
-                  style={{ backgroundColor: '#c8deea' }}
-                  onChange={this.onInputChange}
-                >
-                  Yes
-                </button>
-                <button
-                  type="button"
-                  className="btn"
-                  value={this.state.isAcceptingCompost}
-                  name="false"
-                  style={{ backgroundColor: '#c8deea' }}
-                  onChange={this.onInputChange}
-                >
-                  No
-                </button>
-              </div>
-              <div className="form-footer-container">
-                <Link to="/home">
-                  <button>Submit</button>
-                </Link>
-              </div>
-            </form>
-          </div>
-        </ModalBody>
+                Yes
+              </button>
+              <button
+                type="button"
+                className="btn"
+                value={this.state.isAcceptingCompost}
+                name="false"
+                style={{ backgroundColor: '#c8deea' }}
+                onChange={this.onInputChange}
+              >
+                No
+              </button>
+            </div>
+            <div className="form-footer-container">
+              <Link to="/home">
+                <button>Submit</button>
+              </Link>
+            </div>
+          </form>
+        </div>
       </React.Fragment>
     )
   }
