@@ -75,28 +75,29 @@ module.exports = function(app) {
         })
       }
     })
-  )
+  ) // to test: send user object with location object in body of postman
 
-  app.post('/notifications', (req, res, next) => {
-    // create new notification
-    let newNotification = new Notification({
-      onWay: req.body.onWay,
-      delivered: req.body.delivered,
-      giverId: req.body.giverId,
-      receiverId: req.body.receiverId,
-      timeSent: req.body.timeSent
-    })
-    // add the notification to the receiver
-    req.user.notifications.push(newNotification)
+  app.post(
+    '/notifications',
+    asyncMiddleware(async (req, res, next) => {
+      // create new notification
+      let newNotification = await new Notification({
+        onWay: req.body.onWay,
+        delivered: req.body.delivered,
+        giverId: req.body.giverId,
+        receiverId: req.body.receiverId,
+        timeSent: req.body.timeSent
+      })
 
-    req.user.save((err, user) => {
-      if (err) {
-        console.error(err)
-      } else {
-        res.send({ success: true, product: product })
-      }
+      newNotification.save((err, notification) => {
+        if (err) {
+          console.error(err)
+        } else {
+          res.send({ success: true, notifcation: notification })
+        }
+      })
     })
-  })
+  ) // to test: send notification object in body of postman
   // get all notifications for the receiver
   app.get('/notifications/:user', (req, res, next) => {
     Notification.find({ receiverId: req.params.user })

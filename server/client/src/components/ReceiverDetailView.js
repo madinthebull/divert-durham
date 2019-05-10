@@ -24,7 +24,7 @@ export class ReceiverDetailView extends Component {
             style={{ paddingBottom: '10px' }}
           >
             <div style={{ float: 'right' }}>
-              <i class="far fa-times-circle" />
+              <i className="far fa-times-circle" />
             </div>
             <div
               style={{
