@@ -39,15 +39,30 @@ export class ReceiverDetailView extends Component {
               <div className="col-12">
                 <div className="row">
                   {' '}
-                  <div className="col-5 offset-1">
-                    <p>I'll be there in</p>
-                    <Button>5</Button>
-                    <Button>10</Button>
-                    <Button>20</Button>
+                  <div className="col-4 offset-1">
+                    <div className="row">
+                      {' '}
+                      <p>I'll be there in</p>
+                    </div>
+                    <div className="row">
+                      {' '}
+                      <Button>5</Button>
+                      <Button>10</Button>
+                      <Button>20</Button>
+                    </div>
                   </div>
-                  <div className="col-6">
-                    <p>Ready to deliver?</p>
-                    <Button>Delivered</Button>
+                  <div className="col-1">
+                    <h4>&</h4>
+                  </div>
+                  <div className="col-5 offset-1">
+                    <div className="row">
+                      {' '}
+                      <p>Ready to deliver?</p>
+                    </div>
+                    <div className="row">
+                      {' '}
+                      <Button>Delivered</Button>
+                    </div>
                   </div>
                 </div>
               </div>
