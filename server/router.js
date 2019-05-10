@@ -98,6 +98,7 @@ module.exports = function(app) {
       })
     })
   ) // to test: send notification object in body of postman
+
   // get all notifications for the receiver
   app.get('/notifications/:user', (req, res, next) => {
     Notification.find({ receiverId: req.params.user })
@@ -109,7 +110,8 @@ module.exports = function(app) {
           res.send(notifications.map(notification => notification))
         }
       })
-  })
+  }) // to test: in the browser
+
   // get all the locations actively accepting compost
   app.get('/locations', (req, res, next) => {
     Location.find({ isAcceptingCompost: 'true' })
