@@ -1,19 +1,11 @@
-// const Authentication = require('./controllers/authentication')
-// const passportService = require('./services/passport')
-// const passport = require('passport')
-
-// const requireAuth = passport.authenticate('jwt', { session: false })
-// const requireSignin = passport.authenticate('local', { session: false })
 const User = require('./models/User')
 const Location = require('./models/Location')
 const Notification = require('./models/Notification')
 
-// const Notification = require('./models/Notification')
-// const Receiver = require('./models/Receiver')
-
 module.exports = function(app) {
+  // create new user
   app.post('/join', (req, res) => {
-    //create a new Giver in the database
+    //create a new user in the database
     let newUser = new User({
       username: req.body.username,
       password: req.body.password,
@@ -25,49 +17,103 @@ module.exports = function(app) {
       notifications: req.body.notifications
     })
 
-    // create a new location if the user has specified they want to be a receiver
-    let newLocation = new Location({
-      dropOffInstructions: req.body.dropOffInstructions,
-      isAcceptingCompost: req.body.isAcceptingCompost,
-      dropOffCoordinates: req.body.dropOffCoordinates
-    })
+    // if user wants to be a receiver, create a new location
+    if (
+      req.body.dropOffInstructions &&
+      req.body.isAcceptingCompost &&
+      req.body.dropOffCoordinates
+    ) {
+      let newLocation = new Location({
+        dropOffInstructions: req.body.dropOffInstructions,
+        isAcceptingCompost: req.body.isAcceptingCompost,
+        dropOffCoordinates: req.body.dropOffCoordinates
+      })
 
-    newUser.location = newLocation
+      newUser.location = newLocation
 
-    //Only save if the user doesn't exist yet
-    User.findOne({ username: newUser.username }, function(err, foundUser) {
-      if (!foundUser) {
-        newUser.save((err, user) => {
-          if (err) {
-            console.error(err)
-          } else {
-            res.send({ success: true, user: user })
-          }
-        })
+      // Only save if the user doesn't exist yet
+      User.findOne({ username: newUser.username }, function(err, foundUser) {
+        if (!foundUser) {
+          newUser.save((err, user) => {
+            if (err) {
+              console.error(err)
+            } else {
+              res.send({ success: true, user: user })
+            }
+          })
 
-        newLocation.save((err, location) => {
-          if (err) {
-            console.error(err)
-          } else {
-            res.send({ success: true, location: location })
-          }
-        })
+          newLocation.save((err, location) => {
+            if (err) {
+              console.error(err)
+            } else {
+              res.send({ success: true, location: location })
+            }
+          })
+        } else {
+          console.error('The user already exists in the database')
+        }
+      })
+    } else {
+      // Only save if the user doesn't exist yet
+      User.findOne({ username: newUser.username }, function(err, foundUser) {
+        if (!foundUser) {
+          newUser.save((err, user) => {
+            if (err) {
+              console.error(err)
+            } else {
+              res.send({ success: true, user: user })
+            }
+          })
+        } else {
+          console.error('The user already exists in the database')
+        }
+      })
+    }
+  })
+  app.post('/notifications', (req, res, next) => {
+    // create new notification
+    let newNotification = new Notification(req.body)
+
+    newNotification.onWay = req.body.onWay
+    newNotification.delivered = req.body.delivered
+    newNotification.giverId = req.body.giverId
+    newNotification.receiverId = req.body.receiverId
+    newNotification.timeSent = req.body.timeSent
+
+    // add the notification to the receiver
+    req.user.notifications.push(newNotification)
+
+    req.user.save((err, user) => {
+      if (err) {
+        console.error(err)
       } else {
-        console.error('The user already exists in the database')
+        res.send({ success: true, product: product })
       }
     })
   })
-  // app.get('/notifications', (req, res, next) => {
-  //   Notification.find({})
-  //   .populate('user')
-  //   .exec((err, users) => {
-  //     if (err) {
-  //       console.error(err)
-  //     } else {
-  //         res.send(notifications)
-  //     }
-  //   })
-  
+  // get all notifications for the receiver
+  app.get('/notifications/:user', (req, res, next) => {
+    Notification.find({ receiverId: req.params.user })
+      .populate('user')
+      .exec((err, notifications) => {
+        if (err) {
+          console.error(err)
+        } else {
+          res.send(notifications.map(notification => notification))
+        }
+      })
+  })
+  // get all the locations actively accepting compost
+  app.get('/locations', (req, res) => {
+    Location.find({ isAcceptingCompost: 'true' })
+      .populate('user')
+      .exec((err, locations) => {
+        if (err) {
+          console.error(err)
+        } else {
+          res.send(locations.map(location => location))
+        }
+      })
   })
   app.post('/auth/signin')
   app.post('/auth/signup')

@@ -6,8 +6,8 @@ export const CREATE_USER = 'create_user'
 export const CONVERT_ADDRESS = 'convert_address'
 export const CONVERT_COORDINATES = 'convert_coordinates'
 export const FETCH_NOTIFICATIONS = 'fetch_notifications'
-export const FETCH_ACTIVE_RECEIVERS = 'fetch_active_receivers'
-export const FETCH_RECEIVER_DETAIL = 'fetch_receiver_detail'
+// export const FETCH_ACTIVE_RECEIVERS = 'fetch_active_receivers'
+// export const FETCH_RECEIVER_DETAIL = 'fetch_receiver_detail'
 
 // for db
 const ROOT_URL = 'http://localhost:8000'

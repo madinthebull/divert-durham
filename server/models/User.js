@@ -9,8 +9,7 @@ const UserSchema = new Schema({
   firstName: String,
   lastName: String,
   homeAddress: Object,
-  location: { type: Schema.Types.ObjectId, ref: 'location' },
-  notifications: [{ type: Schema.Types.ObjectId, ref: 'notifications' }]
+  location: { type: Schema.Types.ObjectId, ref: 'location' }
 })
 
 const User = mongoose.model('user', UserSchema)
