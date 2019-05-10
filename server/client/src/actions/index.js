@@ -6,7 +6,7 @@ export const CREATE_USER = 'create_user'
 export const CONVERT_ADDRESS = 'convert_address'
 export const CONVERT_COORDINATES = 'convert_coordinates'
 export const FETCH_NOTIFICATIONS = 'fetch_notifications'
-// export const FETCH_ACTIVE_RECEIVERS = 'fetch_active_receivers'
+export const FETCH_LOCATIONS = 'fetch_locations'
 // export const FETCH_RECEIVER_DETAIL = 'fetch_receiver_detail'
 
 // for db
@@ -50,6 +50,16 @@ export function fetchNotifications() {
 
   return {
     type: FETCH_NOTIFICATIONS,
+    payload: request
+  }
+}
+
+// get all receivers actively receiving compost
+export function fetchLocations() {
+  const request = axios.get(`${ROOT_URL}/locations`)
+
+  return {
+    type: FETCH_LOCATIONS,
     payload: request
   }
 }

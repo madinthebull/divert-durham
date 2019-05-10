@@ -123,7 +123,10 @@ module.exports = function(app) {
           res.send(locations.map(location => location))
         }
       })
-  })
+  }) // to test: in the browser
+
+  // edit profile
+  // app.put('/profile', (req, res, next) => {})
   // app.post('/auth/signin')
   // app.post('/auth/signup')
 }
