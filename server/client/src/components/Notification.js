@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 export class Notification extends Component {
   render() {
+    console.log(this.props)
+    const { onWay, delivered, giverId, receiverId, timeSent } = this.props
     return (
       <React.Fragment>
         <div
