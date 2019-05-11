@@ -16,7 +16,7 @@ const ROOT_URL = 'http://localhost:8000'
 const GEO_URL = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
 // hardcode logged in user
-const userId = '5cd4449a3b933e129c929164'
+const userId = '5cd6fd3418f45e82f9883902'
 // post to db when a user joins Divert Durham
 export function createUser() {
   const request = axios.post(`${ROOT_URL}/join`)

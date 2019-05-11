@@ -1,6 +1,6 @@
 import { FETCH_LOCATIONS } from '../actions'
 
-const initialState = {}
+const initialState = []
 export const locationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LOCATIONS:
