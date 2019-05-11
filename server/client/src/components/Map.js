@@ -57,9 +57,10 @@ export class MapContainer extends Component {
         style={mapStyles}
         initialCenter={coords}
       >
-        {/* <Marker onClick={this.onMarkerClick} name={'your home'} /> */}
-
-        <Marker position={markers1} />
+        <Marker onClick={this.onMarkerClick} name={'your home'} />
+        <Marker position={{ markers1 }} />
+        {/* test */}
+        <Marker position={{ lat: 37.234, lng: -79 }} />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
