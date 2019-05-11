@@ -8,7 +8,12 @@ export const CONVERT_COORDINATES = 'convert_coordinates'
 export const FETCH_NOTIFICATIONS = 'fetch_notifications'
 export const FETCH_LOCATIONS = 'fetch_locations'
 export const SEND_NOTIFICATION = 'send_notification'
-// export const FETCH_RECEIVER_DETAIL = 'fetch_receiver_detail'
+
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers':
+    'Origin, X-Requested-With, Content-Type, Accept, X-Authentication'
+}
 
 // for db
 const ROOT_URL = 'http://localhost:8000'
@@ -30,16 +35,23 @@ export function createUser(userData) {
 
 // for geocoding when a user creates their profile
 export function convertAddress(address) {
-  const request = axios.get(`${GEO_URL}address=${address}&key=${apiKey}`)
+  const request = axios.get(`${GEO_URL}address=${address}&key=${apiKey}`, {
+    headers: CORS_HEADERS
+  })
 
   return {
     type: CONVERT_ADDRESS,
     payload: request
   }
 }
-// for reverse geocoding when a user creates their profile
-export function convertCoordinates(coordinates) {
-  const request = axios.get(`${GEO_URL}latlng=${coordinates}&key=${apiKey}`)
+// for reverse geocoding in the receiverDetailView
+export async function convertCoordinates(dropOffCoordinates) {
+  const request = await axios.get(
+    `${GEO_URL}latlng=${dropOffCoordinates}&key=${apiKey}`,
+    {
+      headers: CORS_HEADERS
+    }
+  )
 
   return {
     type: CONVERT_COORDINATES,
@@ -69,7 +81,11 @@ export function fetchLocations() {
 
 // send notification
 export function sendNotification(notification) {
-  const request = axios.post(`${ROOT_URL}/notifications`)
+  const request = axios({
+    method: 'post',
+    url: `${ROOT_URL}/notifications`,
+    data: notification
+  })
 
   return {
     type: SEND_NOTIFICATION,

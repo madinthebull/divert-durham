@@ -71,6 +71,9 @@ export class MapContainer extends Component {
           position={location.dropOffCoordinates}
           key={location._id}
           onClick={() => this.toggleLocationInfo(location)}
+          icon={{
+            url: 'https://img.icons8.com/color/48/000000/sprout.png'
+          }}
         />
       )
     })
@@ -118,18 +121,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(WrappedContainer)
-
-// WAY 1 this worked before redux
-// export default GoogleApiWrapper({
-//   apiKey: 'AIzaSyAJJD6e0We9CFA9rI-tkvgVoEBdDpYTVhs'
-// })(MapContainer)
-
-// Way 3
-// export const ConnectContainer = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(
-//   GoogleApiWrapper({
-//     apiKey: 'AIzaSyAJJD6e0We9CFA9rI-tkvgVoEBdDpYTVhs'
-//   })(MapContainer)
-// )

@@ -6,7 +6,7 @@ const NotificationSchema = new Schema({
   delivered: Boolean,
   giverId: { type: Schema.Types.ObjectId, ref: 'user' },
   receiverId: { type: Schema.Types.ObjectId, ref: 'user' },
-  timeSent: Number
+  timeSent: Date
 })
 
 const Notification = mongoose.model('notification', NotificationSchema)

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { ModalBody } from 'reactstrap'
-import { sendNotification } from '../actions/index'
+import { sendNotification, convertCoordinates } from '../actions/index'
+import moment from 'moment'
 
 const ViewWrapper = styled.div`
   margin: 5px;
@@ -27,9 +28,11 @@ export class ReceiverDetailView extends Component {
   }
 
   deliveredNotification = e => {
+    const date = moment()
+
     this.setState({
       delivered: !this.state.delivered,
-      timeSent: new Date(timeSent).getTime() / 1000
+      timeSent: date
     })
     const { onWay, delivered, giverId, receiverId, timeSent } = this.state
 
@@ -38,6 +41,7 @@ export class ReceiverDetailView extends Component {
       delivered,
       giverId,
       receiverId,
+
       timeSent
     }
 
@@ -46,9 +50,13 @@ export class ReceiverDetailView extends Component {
   }
 
   onWayNotification = e => {
+    // get the date/time
+    const date = moment()
+
     this.setState({
       onWay: !this.state.onWay,
-      timeSent: new Date(timeSent).getTime() / 1000
+      // get how long ago the notification was sent
+      timeSent: date
     })
     const { onWay, delivered, giverId, receiverId, timeSent } = this.state
 
@@ -66,6 +74,10 @@ export class ReceiverDetailView extends Component {
   render() {
     console.log('this.props', this.props)
     const { dropOffInstructions, dropOffCoordinates } = this.props.location
+
+    console.log('dropOffCoordinates:', dropOffCoordinates)
+    // const address = this.props.convertCoordinates(dropOffCoordinates)
+    // console.log('address:', address)
     return (
       <React.Fragment>
         <ModalBody>
@@ -100,7 +112,7 @@ export class ReceiverDetailView extends Component {
                         <Button
                           name="onWay"
                           value={this.state.delivered}
-                          onClick={this.onClick}
+                          onClick={this.onWayNotification}
                         >
                           On my way
                         </Button>
@@ -119,7 +131,7 @@ export class ReceiverDetailView extends Component {
                         <Button
                           name="delivered"
                           value={this.state.delivered}
-                          onClick={this.onClick}
+                          onClick={this.deliveredNotification}
                         >
                           Delivered
                         </Button>
@@ -139,7 +151,8 @@ export class ReceiverDetailView extends Component {
                 Seeds Community Garden
               </h5>
               <h4 style={{ textAlign: 'center', color: '#00548f' }}>
-                1712 Avondale Drive, Durham, NC 27701
+                1712 Avondale Drive, Durham NC 27701
+                {/* {address.results[0].formatted_address}{' '} */}
               </h4>
               <div style={{ textAlign: 'center' }}>
                 {' '}
@@ -177,7 +190,8 @@ export class ReceiverDetailView extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    sendNotification: notification => dispatch(sendNotification(notification))
+    sendNotification: notification => dispatch(sendNotification(notification)),
+    convertCoordinates: coordinates => dispatch(convertCoordinates(coordinates))
   }
 }
 export default connect(

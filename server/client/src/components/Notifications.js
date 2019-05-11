@@ -6,6 +6,7 @@ import { fetchNotifications } from '../actions/index'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import _ from 'lodash'
+import moment from 'moment'
 
 export class Notifications extends Component {
   // when component mounts, all notifications are fetched
@@ -39,8 +40,8 @@ export class Notifications extends Component {
                 <small>-5 days ago</small>
               </div>
             </div>
-            <div>{notification.giverId}</div>
-            <div>{notification.timeSent}</div>
+            {/* <div>{notification.giverId.username}</div> */}
+            <div>{moment(notification.timeSent).fromNow()}</div>
             <div>{notification.receiverId}</div>
             <div>{notification.onWay}</div>
             <div>{notification.delivered}</div>
@@ -73,11 +74,16 @@ const notificationsListStyle = {
 
 // make all of our notifications from Redux store available to the component's props
 const mapStateToProps = state => {
-  return { notifications: state.notifications }
+  return { notifications: state.notifications, address: state.address }
 }
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchNotifications }, dispatch)
+  return bindActionCreators(
+    {
+      fetchNotifications
+    },
+    dispatch
+  )
 }
 export default connect(
   mapStateToProps,
