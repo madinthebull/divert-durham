@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { ModalBody } from 'reactstrap'
+import { sendNotification } from '../actions/index'
 
 const ViewWrapper = styled.div`
   margin: 5px;
@@ -17,7 +18,54 @@ const Button = styled.button`
 `
 
 export class ReceiverDetailView extends Component {
+  state = {
+    onWay: false,
+    delivered: false,
+    giverId: '5cd6fdba87f9428302daeaa1',
+    receiverId: '5cd6fd3418f45e82f9883902',
+    timeSent: ''
+  }
+
+  deliveredNotification = e => {
+    this.setState({
+      delivered: !this.state.delivered,
+      timeSent: new Date(timeSent).getTime() / 1000
+    })
+    const { onWay, delivered, giverId, receiverId, timeSent } = this.state
+
+    const notification = {
+      onWay,
+      delivered,
+      giverId,
+      receiverId,
+      timeSent
+    }
+
+    this.props.sendNotification(notification)
+    e.preventDefault()
+  }
+
+  onWayNotification = e => {
+    this.setState({
+      onWay: !this.state.onWay,
+      timeSent: new Date(timeSent).getTime() / 1000
+    })
+    const { onWay, delivered, giverId, receiverId, timeSent } = this.state
+
+    const notification = {
+      onWay,
+      delivered,
+      giverId,
+      receiverId,
+      timeSent
+    }
+
+    this.props.sendNotification(notification)
+    e.preventDefault()
+  }
   render() {
+    console.log('this.props', this.props)
+    const { dropOffInstructions, dropOffCoordinates } = this.props.location
     return (
       <React.Fragment>
         <ModalBody>
@@ -45,26 +93,36 @@ export class ReceiverDetailView extends Component {
                     <div className="col-4 offset-1">
                       <div className="row">
                         {' '}
-                        <p>I'll be there in</p>
+                        <p>Let them know when you're heading over</p>
                       </div>
                       <div className="row">
                         {' '}
-                        <Button>5</Button>
-                        <Button>10</Button>
-                        <Button>20</Button>
+                        <Button
+                          name="onWay"
+                          value={this.state.delivered}
+                          onClick={this.onClick}
+                        >
+                          On my way
+                        </Button>
                       </div>
                     </div>
                     <div className="col-1">
                       <h4>&</h4>
                     </div>
-                    <div className="col-5 offset-1">
+                    <div className="col-4 offset-1">
                       <div className="row">
                         {' '}
-                        <p>Ready to deliver?</p>
+                        <p>Let them know when you've dropped off</p>
                       </div>
                       <div className="row">
                         {' '}
-                        <Button>Delivered</Button>
+                        <Button
+                          name="delivered"
+                          value={this.state.delivered}
+                          onClick={this.onClick}
+                        >
+                          Delivered
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -89,7 +147,12 @@ export class ReceiverDetailView extends Component {
               </div>
               <hr />
 
-              <div style={{ textAlign: 'center', marginBottom: '5px' }}>
+              <div
+                style={{
+                  textAlign: 'center',
+                  marginBottom: '5px'
+                }}
+              >
                 <strong>Instructions For Drop Off</strong>
               </div>
               <div
@@ -101,18 +164,7 @@ export class ReceiverDetailView extends Component {
                 }}
               >
                 <p>
-                  <small>
-                    These are the instructions for where you should put the food
-                    scraps when you get to my house Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                    reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id
-                    est laborum.
-                  </small>
+                  <small>{dropOffInstructions}</small>
                 </p>
               </div>
             </div>
@@ -123,4 +175,12 @@ export class ReceiverDetailView extends Component {
   }
 }
 
-export default ReceiverDetailView
+const mapDispatchToProps = dispatch => {
+  return {
+    sendNotification: notification => dispatch(sendNotification(notification))
+  }
+}
+export default connect(
+  null,
+  mapDispatchToProps
+)(ReceiverDetailView)

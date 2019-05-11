@@ -9,7 +9,7 @@ import ReceiverDetailView from './ReceiverDetailView'
 
 const mapStyles = {
   width: '85%',
-  height: '60%',
+  height: '45%',
   position: 'fixed'
   // borderRadius: '50%'
 }

@@ -7,6 +7,7 @@ export const CONVERT_ADDRESS = 'convert_address'
 export const CONVERT_COORDINATES = 'convert_coordinates'
 export const FETCH_NOTIFICATIONS = 'fetch_notifications'
 export const FETCH_LOCATIONS = 'fetch_locations'
+export const SEND_NOTIFICATION = 'send_notification'
 // export const FETCH_RECEIVER_DETAIL = 'fetch_receiver_detail'
 
 // for db
@@ -18,7 +19,7 @@ const GEO_URL = 'https://maps.googleapis.com/maps/api/geocode/json?'
 // hardcode logged in user
 const userId = '5cd6fd3418f45e82f9883902'
 // post to db when a user joins Divert Durham
-export function createUser() {
+export function createUser(userData) {
   const request = axios.post(`${ROOT_URL}/join`)
 
   return {
@@ -62,6 +63,16 @@ export function fetchLocations() {
 
   return {
     type: FETCH_LOCATIONS,
+    payload: request
+  }
+}
+
+// send notification
+export function sendNotification(notification) {
+  const request = axios.post(`${ROOT_URL}/notifications`)
+
+  return {
+    type: SEND_NOTIFICATION,
     payload: request
   }
 }
