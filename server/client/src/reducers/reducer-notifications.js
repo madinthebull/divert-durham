@@ -1,6 +1,6 @@
 import { FETCH_NOTIFICATIONS } from '../actions'
 
-const initialState = {}
+const initialState = []
 export const notificationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_NOTIFICATIONS:

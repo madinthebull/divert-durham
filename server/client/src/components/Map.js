@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react'
+import { fetchLocations } from '../actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import _ from 'lodash'
 
 const mapStyles = {
-  width: '60%',
+  width: '85%',
   height: '60%',
-  position: 'relative'
+  position: 'fixed'
   // borderRadius: '50%'
 }
 
@@ -13,6 +17,11 @@ export class MapContainer extends Component {
     showingInfoWindow: false, //Hides or shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
     selectedPlace: {} //Shows the infoWindo to the selected place upon a marker
+  }
+
+  componentDidMount() {
+    this.props.fetchLocations()
+    console.log('this.props', this.props)
   }
 
   // show the infoWindow popup (component from the library) with details of the clicked place/marker
@@ -33,13 +42,14 @@ export class MapContainer extends Component {
     }
   }
 
-  icons = {
-    home: {
-      icon: ''
-    }
-  }
   render() {
+    console.log('this.props.locations', this.props.locations)
+    const { locations } = this.props
     const coords = { lat: 36.011367, lng: -78.886195 }
+
+    const markers1 = _.map(locations, location => location.dropOffCoordinates)
+    // const markers = locations.map(location => location.dropOffCoordinates)
+
     return (
       <Map
         google={this.props.google}
@@ -47,8 +57,9 @@ export class MapContainer extends Component {
         style={mapStyles}
         initialCenter={coords}
       >
-        <Marker onClick={this.onMarkerClick} name={'your home'} />
+        {/* <Marker onClick={this.onMarkerClick} name={'your home'} /> */}
 
+        <Marker position={markers1} />
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
@@ -63,6 +74,35 @@ export class MapContainer extends Component {
   }
 }
 
-export default GoogleApiWrapper({
+const mapStateToProps = state => {
+  return { locations: state.notifcations }
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ fetchLocations }, dispatch)
+}
+
+// WAY 2
+const WrappedContainer = GoogleApiWrapper({
   apiKey: 'AIzaSyAJJD6e0We9CFA9rI-tkvgVoEBdDpYTVhs'
 })(MapContainer)
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WrappedContainer)
+
+// WAY 1 this worked before redux
+// export default GoogleApiWrapper({
+//   apiKey: 'AIzaSyAJJD6e0We9CFA9rI-tkvgVoEBdDpYTVhs'
+// })(MapContainer)
+
+// Way 3
+// export const ConnectContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(
+//   GoogleApiWrapper({
+//     apiKey: 'AIzaSyAJJD6e0We9CFA9rI-tkvgVoEBdDpYTVhs'
+//   })(MapContainer)
+// )
