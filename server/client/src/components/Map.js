@@ -43,12 +43,13 @@ export class MapContainer extends Component {
   }
 
   render() {
-    console.log('this.props.locations', this.props.locations)
-    const { locations } = this.props
+    // show marker for the user's home address
     const coords = { lat: 36.011367, lng: -78.886195 }
 
-    const markers1 = _.map(locations, location => location.dropOffCoordinates)
-    // const markers = locations.map(location => location.dropOffCoordinates)
+    // show all users actively accepting compost
+    const Locations = _.map(this.props.locations.locations, location => {
+      return <Marker position={location.dropOffCoordinates} />
+    })
 
     return (
       <Map
@@ -58,9 +59,7 @@ export class MapContainer extends Component {
         initialCenter={coords}
       >
         <Marker onClick={this.onMarkerClick} name={'your home'} />
-        <Marker position={{ markers1 }} />
-        {/* test */}
-        <Marker position={{ lat: 37.234, lng: -79 }} />
+        {Locations}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
@@ -76,7 +75,7 @@ export class MapContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return { locations: state.notifcations }
+  return { locations: state.locations }
 }
 
 const mapDispatchToProps = dispatch => {
