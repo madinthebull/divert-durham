@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { ModalBody } from 'reactstrap'
 
 const ViewWrapper = styled.div`
   margin: 5px;
@@ -18,101 +20,104 @@ export class ReceiverDetailView extends Component {
   render() {
     return (
       <React.Fragment>
-        <ViewWrapper>
-          <div
-            className="container shadow-sm"
-            style={{ paddingBottom: '10px' }}
-          >
-            <div style={{ float: 'right' }}>
-              <i className="far fa-times-circle" />
-            </div>
+        <ModalBody>
+          <ViewWrapper>
             <div
-              style={{
-                textAlign: 'center',
-                paddingTop: '10px',
-                paddingBottom: '5px'
-              }}
+              className="container shadow-sm"
+              style={{ paddingBottom: '10px' }}
             >
-              <strong>Take Action</strong>
-            </div>
-            <div className="row">
-              <div className="col-12">
-                <div className="row">
-                  {' '}
-                  <div className="col-4 offset-1">
-                    <div className="row">
-                      {' '}
-                      <p>I'll be there in</p>
+              <div style={{ float: 'right' }}>
+                <i className="far fa-times-circle" />
+              </div>
+              <div
+                style={{
+                  textAlign: 'center',
+                  paddingTop: '10px',
+                  paddingBottom: '5px'
+                }}
+              >
+                <strong>Take Action</strong>
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <div className="row">
+                    {' '}
+                    <div className="col-4 offset-1">
+                      <div className="row">
+                        {' '}
+                        <p>I'll be there in</p>
+                      </div>
+                      <div className="row">
+                        {' '}
+                        <Button>5</Button>
+                        <Button>10</Button>
+                        <Button>20</Button>
+                      </div>
                     </div>
-                    <div className="row">
-                      {' '}
-                      <Button>5</Button>
-                      <Button>10</Button>
-                      <Button>20</Button>
+                    <div className="col-1">
+                      <h4>&</h4>
                     </div>
-                  </div>
-                  <div className="col-1">
-                    <h4>&</h4>
-                  </div>
-                  <div className="col-5 offset-1">
-                    <div className="row">
-                      {' '}
-                      <p>Ready to deliver?</p>
-                    </div>
-                    <div className="row">
-                      {' '}
-                      <Button>Delivered</Button>
+                    <div className="col-5 offset-1">
+                      <div className="row">
+                        {' '}
+                        <p>Ready to deliver?</p>
+                      </div>
+                      <div className="row">
+                        {' '}
+                        <Button>Delivered</Button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <hr />
-            <h5
-              style={{
-                textAlign: 'center',
-                paddingBottom: '5px',
-                color: '#00548f'
-              }}
-            >
-              Seeds Community Garden
-            </h5>
-            <h4 style={{ textAlign: 'center', color: '#00548f' }}>
-              1712 Avondale Drive, Durham, NC 27701
-            </h4>
-            <div style={{ textAlign: 'center' }}>
-              {' '}
-              <a href="https://www.google.com/maps">Get Directions</a>
-            </div>
-            <hr />
+              <hr />
+              <h5
+                style={{
+                  textAlign: 'center',
+                  paddingBottom: '5px',
+                  color: '#00548f'
+                }}
+              >
+                Seeds Community Garden
+              </h5>
+              <h4 style={{ textAlign: 'center', color: '#00548f' }}>
+                1712 Avondale Drive, Durham, NC 27701
+              </h4>
+              <div style={{ textAlign: 'center' }}>
+                {' '}
+                <a href="https://www.google.com/maps">Get Directions</a>
+              </div>
+              <hr />
 
-            <div style={{ textAlign: 'center', marginBottom: '5px' }}>
-              <strong>Instructions For Drop Off</strong>
+              <div style={{ textAlign: 'center', marginBottom: '5px' }}>
+                <strong>Instructions For Drop Off</strong>
+              </div>
+              <div
+                style={{
+                  border: 'solid #c8deea',
+                  overflowY: 'scroll',
+                  maxHeight: '150px',
+                  padding: '5px'
+                }}
+              >
+                <p>
+                  <small>
+                    These are the instructions for where you should put the food
+                    scraps when you get to my house Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                    reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id
+                    est laborum.
+                  </small>
+                </p>
+              </div>
             </div>
-            <div
-              style={{
-                border: 'solid #c8deea',
-                overflowY: 'scroll',
-                maxHeight: '150px',
-                padding: '5px'
-              }}
-            >
-              <p>
-                <small>
-                  These are the instructions for where you should put the food
-                  scraps when you get to my house Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.
-                </small>
-              </p>
-            </div>
-          </div>
-        </ViewWrapper>
+          </ViewWrapper>
+        </ModalBody>
       </React.Fragment>
     )
   }

@@ -4,6 +4,8 @@ import { fetchLocations } from '../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import _ from 'lodash'
+import { Modal } from 'reactstrap'
+import ReceiverDetailView from './ReceiverDetailView'
 
 const mapStyles = {
   width: '85%',
@@ -16,14 +18,30 @@ export class MapContainer extends Component {
   state = {
     showingInfoWindow: false, //Hides or shows the infoWindow
     activeMarker: {}, //Shows the active marker upon click
-    selectedPlace: {} //Shows the infoWindo to the selected place upon a marker
+    selectedPlace: {}, //Shows the infoWindo to the selected place upon a marker
+    showLocationInfo: false,
+    location: {}
   }
 
   componentDidMount() {
     this.props.fetchLocations()
-    console.log('this.props', this.props)
   }
 
+  toggleLocationInfo = location => {
+    this.setState({ showLocationInfo: !this.state.showLocationInfo, location })
+  }
+  showModal = () => {
+    if (this.state.showLocationInfo === true) {
+      return (
+        <Modal isOpen={this.state.showLocationInfo}>
+          <ReceiverDetailView
+            toggle={this.toggleLocationInfo}
+            location={this.state.location}
+          />
+        </Modal>
+      )
+    }
+  }
   // show the infoWindow popup (component from the library) with details of the clicked place/marker
   onMarkerClick = (props, marker, event) => {
     this.setState({
@@ -48,28 +66,37 @@ export class MapContainer extends Component {
 
     // show all users actively accepting compost
     const Locations = _.map(this.props.locations.locations, location => {
-      return <Marker position={location.dropOffCoordinates} />
+      return (
+        <Marker
+          position={location.dropOffCoordinates}
+          key={location._id}
+          onClick={() => this.toggleLocationInfo(location)}
+        />
+      )
     })
 
     return (
-      <Map
-        google={this.props.google}
-        zoom={16}
-        style={mapStyles}
-        initialCenter={coords}
-      >
-        <Marker onClick={this.onMarkerClick} name={'your home'} />
-        {Locations}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
+      <React.Fragment>
+        {this.showModal()}
+        <Map
+          google={this.props.google}
+          zoom={16}
+          style={mapStyles}
+          initialCenter={coords}
         >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-      </Map>
+          <Marker onClick={this.onMarkerClick} name={'your home'} />
+          {Locations}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h4>{this.state.selectedPlace.name}</h4>
+            </div>
+          </InfoWindow>
+        </Map>
+      </React.Fragment>
     )
   }
 }
