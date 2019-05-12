@@ -8,7 +8,7 @@ export class Home extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container">
+        <div className="container" style={{ marginTop: '165px' }}>
           <div className="col-12">
             <div className="row mb-3">
               <div className="col-3" style={stepStyle}>

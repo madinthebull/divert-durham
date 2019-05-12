@@ -9,7 +9,7 @@ export class Login extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="container" style={{ marginTop: '200px' }}>
         {' '}
         <div>This is the login component</div>
         <div className="container">
@@ -19,7 +19,6 @@ export class Login extends Component {
               <div className="form-header-container">
                 <div className="form-header">
                   <div className="form-name">Login</div>
-                  <div className="fas fa-times" />
                 </div>
               </div>
               <form className="form-field-container">

@@ -19,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <AppWrapper>
-        <div className="container" style={{ marginTop: '165px' }} />
+        <div className="container" />
         <Switch>
           <Route exact path={'/'} component={Landing} />
           <Route exact path={'/home'} component={Home} />

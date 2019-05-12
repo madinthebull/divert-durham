@@ -69,7 +69,8 @@ export class Notifications extends Component {
 }
 
 const notificationsListStyle = {
-  overflowY: 'scroll'
+  overflowY: 'scroll',
+  marginTop: '165px'
 }
 
 // make all of our notifications from Redux store available to the component's props

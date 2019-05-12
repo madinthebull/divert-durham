@@ -43,7 +43,7 @@ const Button = styled.button`
 export class Landing extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container" style={{ marginTop: '200px' }}>
         <div style={{ textAlign: 'center' }}> This is the landing page</div>
         <div className="row">
           <div className="col-12 offset-4">

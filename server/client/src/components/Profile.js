@@ -20,7 +20,7 @@ class Profile extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container">
+        <div className="container" style={{ marginTop: '165px' }}>
           <div className="mask show" />
           <div className="form-container show">
             <div className="form-card show">

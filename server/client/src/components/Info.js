@@ -7,7 +7,7 @@ export class Info extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container">
+        <div className="container" style={{ marginTop: '165px' }}>
           <div>This is the info component</div>
           <div className="row">
             <div
