@@ -261,7 +261,7 @@ const inputStyle = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createUser: userData => dispatch(createUser(userData))
+    createUser: newUserData => dispatch(createUser(newUserData))
   }
 }
 export default connect(

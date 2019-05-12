@@ -23,9 +23,14 @@ const GEO_URL = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
 // hardcode logged in user
 const userId = '5cd6fd3418f45e82f9883902'
+
 // post to db when a user joins Divert Durham
-export function createUser(userData) {
-  const request = axios.post(`${ROOT_URL}/join`)
+export function createUser(newUserData) {
+  const request = axios({
+    method: 'post',
+    url: `${ROOT_URL}/join`,
+    data: newUserData
+  })
 
   return {
     type: CREATE_USER,

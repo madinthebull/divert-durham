@@ -18,8 +18,7 @@ module.exports = function(app) {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        homeAddress: req.body.homeAddress,
-        notifications: req.body.notifications
+        homeAddress: req.body.homeAddress
       })
 
       // if user wants to be a receiver, create a new location
