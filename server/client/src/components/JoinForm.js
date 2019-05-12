@@ -241,6 +241,7 @@ export class JoinForm extends Component {
               />
               No
             </div>
+            <hr />
             <div className="form-footer-container">
               <Link to="/home">
                 <button>Submit</button>

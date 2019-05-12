@@ -83,7 +83,7 @@ export class MapContainer extends Component {
     // } else {
     //   url: 'https://img.icons8.com/color/48/000000/field.png'
     // }
-    
+
     // show all users actively accepting compost
     const Locations = _.map(this.props.locations.locations, location => {
       return (
