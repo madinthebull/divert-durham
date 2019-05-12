@@ -156,7 +156,7 @@ export class ReceiverDetailView extends Component {
               </h5>
               <h4 style={{ textAlign: 'center', color: '#00548f' }}>
                 1712 Avondale Drive, Durham NC 27701
-                {/* {address.results[0].formatted_address}{' '} */}
+                {/* {address.results[0]formatted_address}{' '} */}
               </h4>
               <div style={{ textAlign: 'center' }}>
                 {' '}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SubmitButton from './Button'
-import { createUser } from '../actions/index'
+import { createUser, convertAddress } from '../actions/index'
 
 export class JoinForm extends Component {
   state = {
@@ -11,11 +11,11 @@ export class JoinForm extends Component {
     email: '',
     firstName: '',
     lastName: '',
-    homeAddress: '',
+    home: '',
     receiverType: '',
     dropOffInstructions: '',
     isAcceptingCompost: '',
-    dropOffCoordinates: ''
+    dropOff: ''
   }
 
   // as data is entered, capture in the state
@@ -25,6 +25,26 @@ export class JoinForm extends Component {
 
   // on submit, send POST request to server
   onFormSubmit = e => {
+    e.preventDefault()
+
+    const { home } = this.state
+    let address = home
+    let convertedAddress = this.props.convertAddress(address)
+    console.log('convertedAddress', convertedAddress)
+    this.setState({
+      homeAddress: convertedAddress.results[0].geometry.location
+    })
+
+    if (this.state.droOff) {
+      const { dropOff } = this.state
+      let drop = { dropOff }
+      let convertedCoordinates = this.props.convertAddress(drop)
+      console.log('convertedCoordinates', convertedCoordinates)
+      this.setState({
+        dropOffCoordinates: convertedCoordinates.results[0].geometry.location
+      })
+    }
+
     const {
       username,
       password,
@@ -48,11 +68,11 @@ export class JoinForm extends Component {
       homeAddress,
       receiverType,
       dropOffLocation,
-
       dropOffInstructions,
       isAcceptingCompost,
       dropOffCoordinates
     }
+    console.log()
 
     this.props.createUser(newUserData)
 
@@ -71,8 +91,6 @@ export class JoinForm extends Component {
       isAcceptingCompost: '',
       dropOffCoordinates: ''
     })
-
-    e.preventDefault()
   }
   render() {
     return (
@@ -131,10 +149,10 @@ export class JoinForm extends Component {
                   <p>Home Address</p>
                   <input
                     type="text"
-                    name="homeAddress"
+                    name="home"
                     className="form-control"
                     placeholder="Enter address"
-                    value={this.state.homeAddress}
+                    value={this.state.home}
                     style={inputStyle}
                     onChange={this.onInputChange}
                   />
@@ -208,10 +226,10 @@ export class JoinForm extends Component {
                   <p>Drop Off Address</p>
                   <input
                     type="text"
-                    name="dropOffCoordinates"
+                    name="dropOff"
                     className="form-control"
                     placeholder="Enter address where you'd like scraps to be dropped off"
-                    value={this.state.dropOffCoordinates}
+                    value={this.state.dropOff}
                     style={inputStyle}
                     onChange={this.onInputChange}
                   />
@@ -251,9 +269,9 @@ export class JoinForm extends Component {
                   </div>
                   <hr />
                   <div className="form-footer-container">
-                    <Link to="/home">
-                      <button>Submit</button>
-                    </Link>
+                    {/* <Link to="/home"> */}
+                    <button>Submit</button>
+                    {/* </Link> */}
                   </div>
                 </form>
               </div>
@@ -272,7 +290,8 @@ const inputStyle = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createUser: newUserData => dispatch(createUser(newUserData))
+    createUser: newUserData => dispatch(createUser(newUserData)),
+    convertAddress: address => dispatch(convertAddress(address))
   }
 }
 export default connect(
