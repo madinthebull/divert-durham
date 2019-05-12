@@ -28,7 +28,10 @@ export class MapContainer extends Component {
   }
 
   toggleLocationInfo = location => {
-    this.setState({ showLocationInfo: !this.state.showLocationInfo, location })
+    this.setState({
+      showLocationInfo: !this.state.showLocationInfo,
+      location
+    })
   }
   showModal = () => {
     if (this.state.showLocationInfo === true) {
@@ -59,11 +62,28 @@ export class MapContainer extends Component {
       })
     }
   }
+  icons = {
+    schoolurl: 'https://img.icons8.com/color/48/000000/school-building.png',
+    communitynurl: 'https://img.icons8.com/color/48/000000/sprout.png',
+    personalurl: '',
+    farmurl: 'https://img.icons8.com/color/48/000000/field.png'
+  }
 
   render() {
     // show marker for the user's home address
     const coords = { lat: 36.011367, lng: -78.886195 }
 
+    //conditionally render icons based on receiverType
+    // if (this.props.locations.locations.receiverType == 'Personal') {
+    //   url: 'https://img.icons8.com/color/48/000000/orchid.png'
+    // } else if (this.props.locations.locations.receiverType == 'School') {
+    //   url: 'https://img.icons8.com/color/48/000000/school-building.png'
+    // } else if (this.props.locations.locations.receiverType == 'Community') {
+    //   url: 'https://img.icons8.com/color/48/000000/sprout.png'
+    // } else {
+    //   url: 'https://img.icons8.com/color/48/000000/field.png'
+    // }
+    
     // show all users actively accepting compost
     const Locations = _.map(this.props.locations.locations, location => {
       return (

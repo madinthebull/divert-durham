@@ -24,11 +24,15 @@ module.exports = function(app) {
 
       // if user wants to be a receiver, create a new location
       if (
+        req.body.receiverType &&
+        req.body.dropOffLocation &&
         req.body.dropOffInstructions &&
         req.body.isAcceptingCompost &&
         req.body.dropOffCoordinates
       ) {
         let newLocation = new Location({
+          receiverType: req.body.receiverType,
+          dropOffLocation: req.body.dropOffLocation,
           dropOffInstructions: req.body.dropOffInstructions,
           isAcceptingCompost: req.body.isAcceptingCompost,
           dropOffCoordinates: req.body.dropOffCoordinates

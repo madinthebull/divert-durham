@@ -73,7 +73,11 @@ export class ReceiverDetailView extends Component {
   }
   render() {
     console.log('this.props', this.props)
-    const { dropOffInstructions, dropOffCoordinates } = this.props.location
+    const {
+      dropOffInstructions,
+      dropOffCoordinates,
+      dropOffLocation
+    } = this.props.location
 
     console.log('dropOffCoordinates:', dropOffCoordinates)
     // const address = this.props.convertCoordinates(dropOffCoordinates)
@@ -148,7 +152,7 @@ export class ReceiverDetailView extends Component {
                   color: '#00548f'
                 }}
               >
-                Seeds Community Garden
+                {dropOffLocation}{' '}
               </h5>
               <h4 style={{ textAlign: 'center', color: '#00548f' }}>
                 1712 Avondale Drive, Durham NC 27701

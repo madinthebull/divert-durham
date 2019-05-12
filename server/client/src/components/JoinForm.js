@@ -12,6 +12,7 @@ export class JoinForm extends Component {
     firstName: '',
     lastName: '',
     homeAddress: '',
+    receiverType: '',
     dropOffInstructions: '',
     isAcceptingCompost: '',
     dropOffCoordinates: ''
@@ -31,6 +32,8 @@ export class JoinForm extends Component {
       firstName,
       lastName,
       homeAddress,
+      receiverType,
+      dropOffLocation,
       dropOffInstructions,
       isAcceptingCompost,
       dropOffCoordinates
@@ -43,6 +46,9 @@ export class JoinForm extends Component {
       firstName,
       lastName,
       homeAddress,
+      receiverType,
+      dropOffLocation,
+
       dropOffInstructions,
       isAcceptingCompost,
       dropOffCoordinates
@@ -58,6 +64,9 @@ export class JoinForm extends Component {
       firstName: '',
       lastName: '',
       homeAddress: '',
+      receiverType: '',
+      dropOffLocation: '',
+
       dropOffInstructions: '',
       isAcceptingCompost: '',
       dropOffCoordinates: ''
@@ -126,7 +135,69 @@ export class JoinForm extends Component {
             <div>
               Only fill out the next section If you would like to be a receiver
             </div>
+            <p className="">
+              Please choose what best describes your drop off location
+            </p>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="receiverType"
+                id="exampleRadios1"
+                value={this.state.receiverType}
+                checked
+                onChange={this.onInputChange}
+              />
+              <img src="https://img.icons8.com/color/48/000000/orchid.png" />{' '}
+              Personal Garden
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="receiverType"
+                id="exampleRadios2"
+                value={this.state.receiverType}
+                onChange={this.onInputChange}
+              />{' '}
+              <img src="https://img.icons8.com/color/48/000000/sprout.png" />{' '}
+              Community Garden
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="receiverType"
+                id="exampleRadios2"
+                value={this.state.receiverType}
+                onChange={this.onInputChange}
+              />
+              <img src="https://img.icons8.com/color/48/000000/school-building.png" />{' '}
+              School Garden
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="receiverType"
+                id="exampleRadios2"
+                value={this.state.receiverType}
+                onChange={this.onInputChange}
+              />
+              <img src="https://img.icons8.com/color/48/000000/field.png" />{' '}
+              Farm
+            </div>
             <p>Drop Off Location</p>
+            <input
+              type="text"
+              name="dropOffLocation"
+              className="form-control"
+              placeholder="Enter name of your drop off location. Ex: 'Joe's Jungle', 'Seeds', 'Bluebird Farm'"
+              value={this.state.droppOffLocation}
+              style={inputStyle}
+              onChange={this.onInputChange}
+            />
+            <p>Drop Off Address</p>
             <input
               type="text"
               name="dropOffCoordinates"
@@ -146,32 +217,29 @@ export class JoinForm extends Component {
               style={inputStyle}
               onChange={this.onInputChange}
             />
-            <p className="">Want to receive food scrap donations now?</p>
-            <div
-              className="btn-group"
-              role="group"
-              aria-label="Actively accepting compost"
-            >
-              <button
-                type="button"
-                className="btn"
-                value={this.state.isAcceptingCompost}
+            <p>Put my drop off location on the map</p>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
                 name="true"
-                style={{ backgroundColor: '#c8deea' }}
-                onChange={this.onInputChange}
-              >
-                Yes
-              </button>
-              <button
-                type="button"
-                className="btn"
+                id="exampleRadios1"
                 value={this.state.isAcceptingCompost}
-                name="false"
-                style={{ backgroundColor: '#c8deea' }}
+                checked
                 onChange={this.onInputChange}
-              >
-                No
-              </button>
+              />
+              Yes
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="false"
+                id="exampleRadios2"
+                value={this.state.isAcceptingCompost}
+                onChange={this.onInputChange}
+              />
+              No
             </div>
             <div className="form-footer-container">
               <Link to="/home">
