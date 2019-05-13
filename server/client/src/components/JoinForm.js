@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import SubmitButton from './Button'
 import { createUser, convertAddress } from '../actions/index'
+import styled from 'styled-components'
 
 export class JoinForm extends Component {
   state = {
@@ -62,12 +63,14 @@ export class JoinForm extends Component {
       email,
       firstName,
       lastName,
+      home,
       homeAddress,
       receiverType,
       dropOffLocation,
       dropOffInstructions,
       isAcceptingCompost,
-      dropOffCoordinates
+      dropOffCoordinates,
+      dropOff
     } = this.state
 
     const newUserData = {
@@ -76,12 +79,14 @@ export class JoinForm extends Component {
       email,
       firstName,
       lastName,
+      home,
       homeAddress,
       receiverType,
       dropOffLocation,
       dropOffInstructions,
       isAcceptingCompost,
-      dropOffCoordinates
+      dropOffCoordinates,
+      dropOff
     }
     console.log()
 
@@ -247,7 +252,7 @@ export class JoinForm extends Component {
                     style={inputStyle}
                     onChange={this.onInputChange}
                   />
-                  <p>Put my drop off location on the map</p>
+                  <p>Are you ready to recieve food scraps?</p>
                   <div className="form-check">
                     <input
                       className="form-check-input"
@@ -270,9 +275,9 @@ export class JoinForm extends Component {
                   </div>
                   <hr />
                   <div className="form-footer-container">
-                    {/* <Link to="/home"> */}
-                    <button>Submit</button>
-                    {/* </Link> */}
+                    <Link to="/home">
+                      <Save>Submit</Save>
+                    </Link>
                   </div>
                 </form>
               </div>
@@ -288,6 +293,13 @@ const inputStyle = {
   backgroundColor: '#ddd',
   borderRadius: '5px'
 }
+
+const Save = styled.button`
+  background-color: #99c5b9;
+  margin: 3px;
+  border-radius: 5px;
+  border: transparent;
+`
 
 // make our converted address from Redux store available to the component's props
 const mapStateToProps = state => {

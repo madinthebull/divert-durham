@@ -17,6 +17,7 @@ module.exports = function(app) {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        home: req.body.home,
         homeAddress: req.body.homeAddress
       })
 
@@ -26,14 +27,16 @@ module.exports = function(app) {
         req.body.dropOffLocation &&
         req.body.dropOffInstructions &&
         req.body.isAcceptingCompost &&
-        req.body.dropOffCoordinates
+        req.body.dropOffCoordinates &&
+        req.body.dropOff
       ) {
         let newLocation = new Location({
           receiverType: req.body.receiverType,
           dropOffLocation: req.body.dropOffLocation,
           dropOffInstructions: req.body.dropOffInstructions,
           isAcceptingCompost: req.body.isAcceptingCompost,
-          dropOffCoordinates: req.body.dropOffCoordinates
+          dropOffCoordinates: req.body.dropOffCoordinates,
+          dropOff: req.body.dropOff
         })
 
         newUser.location = newLocation

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import logo from '../static/DDlogo.png'
 
 const Hexagon = styled.div`
   width: 100px;
@@ -35,33 +36,52 @@ const Hexagon = styled.div`
   }
 `
 const Button = styled.button`
-  background-color: #c8deea;
+  background-color: #white;
   margin: 3px;
   border-radius: 5px;
   border: transparent;
 `
+
 export class Landing extends Component {
   render() {
     return (
-      <div className="container" style={{ marginTop: '200px' }}>
-        <div style={{ textAlign: 'center' }}> This is the landing page</div>
-        <div className="row">
-          <div className="col-12 offset-4">
-            <Hexagon>Divert Durham</Hexagon>
+      <div
+        className="container"
+        style={{
+          backgroundImage: 'url(http://www.powerindirt.com/images/1.jpg)',
+          height: '736px',
+          backgroundSize: 'fill',
+          overflow: 'hidden',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div style={{ marginTop: '207px' }}>
+          <div className="row">
+            {/* <Hexagon className="shadow-sm">Divert Durham</Hexagon> */}
+            <img
+              src={logo}
+              width="300px"
+              height="300px"
+              style={{
+                borderRadius: '50%',
+                marginLeft: '50px',
+                marginBottom: '50px'
+              }}
+            />
           </div>
-        </div>
-        <div className="row">
-          <div className="col-12">
-            <div className="row">
-              <div className="col-3 offset-2">
-                <Link to="/login">
-                  <Button>Login</Button>
-                </Link>
-              </div>
-              <div className="col-4 offset-2">
-                <Link to="/join">
-                  <Button onClick={this.onClick}>Join now</Button>
-                </Link>
+          <div className="row">
+            <div className="col-12">
+              <div className="row">
+                <div className="col-3 offset-2">
+                  <Link to="/login">
+                    <Button>Login</Button>
+                  </Link>
+                </div>
+                <div className="col-4 offset-2">
+                  <Link to="/join">
+                    <Button onClick={this.onClick}>Join now</Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

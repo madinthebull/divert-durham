@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   email: String,
   firstName: String,
   lastName: String,
+  home: String,
   homeAddress: Object,
   location: { type: Schema.Types.ObjectId, ref: 'location' }
 })

@@ -27,34 +27,13 @@ export class ReceiverDetailView extends Component {
     timeSent: ''
   }
 
-  deliveredNotification = e => {
-    const date = moment()
-
-    this.setState({
-      delivered: !this.state.delivered,
-      timeSent: date
-    })
-    const { onWay, delivered, giverId, receiverId, timeSent } = this.state
-
-    const notification = {
-      onWay,
-      delivered,
-      giverId,
-      receiverId,
-
-      timeSent
-    }
-
-    this.props.sendNotification(notification)
-    e.preventDefault()
-  }
-
-  onWayNotification = e => {
+  onWayNotification = async e => {
     // get the date/time
-    const date = moment()
+    const date = await moment()
 
     this.setState({
       onWay: !this.state.onWay,
+      delivered: false,
       // get how long ago the notification was sent
       timeSent: date
     })
@@ -68,15 +47,40 @@ export class ReceiverDetailView extends Component {
       timeSent
     }
 
-    this.props.sendNotification(notification)
+    await this.props.sendNotification(notification)
     e.preventDefault()
   }
+
+  deliveredNotification = async e => {
+    const date = await moment()
+
+    this.setState({
+      delivered: !this.state.delivered,
+      onWay: false,
+      timeSent: date
+    })
+    const { onWay, delivered, giverId, receiverId, timeSent } = this.state
+
+    const notification = {
+      onWay,
+      delivered,
+      giverId,
+      receiverId,
+
+      timeSent
+    }
+
+    await this.props.sendNotification(notification)
+    e.preventDefault()
+  }
+
   render() {
     console.log('this.props', this.props)
     const {
       dropOffInstructions,
       dropOffCoordinates,
-      dropOffLocation
+      dropOffLocation,
+      dropOff
     } = this.props.location
 
     console.log('dropOffCoordinates:', dropOffCoordinates)
@@ -90,9 +94,12 @@ export class ReceiverDetailView extends Component {
               className="container shadow-sm"
               style={{ paddingBottom: '10px' }}
             >
-              <div style={{ float: 'right' }}>
-                <i className="far fa-times-circle" />
-              </div>
+              <button style={{ float: 'right' }}>
+                <i
+                  className="far fa-times-circle"
+                  onClick={this.props.toggle}
+                />
+              </button>
               <div
                 style={{
                   textAlign: 'center',
@@ -155,8 +162,7 @@ export class ReceiverDetailView extends Component {
                 {dropOffLocation}{' '}
               </h5>
               <h4 style={{ textAlign: 'center', color: '#00548f' }}>
-                1712 Avondale Drive, Durham NC 27701
-                {/* {address.results[0]formatted_address}{' '} */}
+                {dropOff}
               </h4>
               <div style={{ textAlign: 'center' }}>
                 {' '}

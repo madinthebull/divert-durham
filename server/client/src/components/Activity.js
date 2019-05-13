@@ -21,34 +21,61 @@ export class Activity extends Component {
         this.props.notifications.notifications
       )
       return _.map(this.props.notifications.notifications, notification => {
-        return (
-          <React.Fragment key={notification._id}>
-            <div
-              className="col-10 offset-1 shadow-sm"
-              style={{
-                backgroundColor: '#c8deea',
-                borderRadius: '5px',
-                padding: '5px',
-                marginBottom: '15px'
-              }}
-            >
-              <div style={{ float: 'right' }}>May 1</div>
-              <div style={{ padding: '5px' }}>
-                {' '}
-                <strong>Sean D.</strong> is on his way in <strong>20</strong>{' '}
-                minutes!
+        if (notification.onWay === true) {
+          return (
+            <React.Fragment key={notification._id}>
+              <div
+                className="col-10 offset-1 shadow-sm"
+                style={{
+                  backgroundColor: '#99C5B9',
+                  borderRadius: '5px',
+                  padding: '5px',
+                  marginBottom: '15px'
+                }}
+              >
+                <div style={{ float: 'right', paddingRight: '8px' }}>
+                  {' '}
+                  {moment(notification.timeSent).format('MMM Do')}
+                </div>
+                <div style={{ padding: '5px' }}>
+                  {' '}
+                  <strong>{notification.receiverId.username}</strong> is on
+                  their way!
+                </div>
+                <div>
+                  <small>-{moment(notification.timeSent).fromNow()}</small>
+                </div>
               </div>
-              <div>
-                <small>-5 days ago</small>
+            </React.Fragment>
+          )
+        } else if (notification.delivered === true) {
+          return (
+            <React.Fragment key={notification._id}>
+              <div
+                className="col-10 offset-1 shadow-sm"
+                style={{
+                  backgroundColor: '#FFD689',
+                  borderRadius: '5px',
+                  padding: '5px',
+                  marginBottom: '15px'
+                }}
+              >
+                <div style={{ float: 'right', paddingRight: '8px' }}>
+                  {moment(notification.timeSent).format('MMM Do')}
+                </div>
+                <div style={{ padding: '5px' }}>
+                  {' '}
+                  <strong>{notification.receiverId.username}</strong> has
+                  delivered.
+                </div>
+                <div>
+                  <small> -{moment(notification.timeSent).fromNow()}</small>
+                </div>
               </div>
-            </div>
-            {/* <div>{notification.giverId.username}</div> */}
-            <div>{moment(notification.timeSent).fromNow()}</div>
-            <div>{notification.receiverId.username}</div>
-            <div>{notification.onWay}</div>
-            <div>{notification.delivered}</div>
-          </React.Fragment>
-        )
+              {/* <div>{notification.giverId.username}</div> */}
+            </React.Fragment>
+          )
+        }
       })
     } else {
       return <div>Loading...</div>
@@ -59,11 +86,9 @@ export class Activity extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        <div className="container" style={{ notificationsListStyle }}>
-          This is the notifications component
-        </div>{' '}
-        {this.renderNotifications()}
-        />
+        <div className="container" style={notificationsListStyle}>
+          {this.renderNotifications()}
+        </div>
         <Footer />
       </React.Fragment>
     )
@@ -72,7 +97,7 @@ export class Activity extends Component {
 
 const notificationsListStyle = {
   overflowY: 'scroll',
-  marginTop: '165px'
+  marginTop: '120px'
 }
 
 // make all of our notifications from Redux store available to the component's props

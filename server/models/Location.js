@@ -7,7 +7,8 @@ const LocationSchema = new Schema({
   dropOffLocation: String,
   dropOffInstructions: String,
   isAcceptingCompost: Boolean,
-  dropOffCoordinates: Object
+  dropOffCoordinates: Object,
+  dropOff: String
 })
 
 const Location = mongoose.model('location', LocationSchema)

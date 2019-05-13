@@ -8,9 +8,9 @@ import { Modal } from 'reactstrap'
 import ReceiverDetailView from './ReceiverDetailView'
 
 const mapStyles = {
-  width: '85%',
-  height: '45%',
-  position: 'fixed'
+  width: '90%',
+  height: '60%'
+  // position: 'fixed'
   // borderRadius: '50%'
 }
 
@@ -73,15 +73,21 @@ export class MapContainer extends Component {
     // show marker for the user's home address
     const coords = { lat: 36.011367, lng: -78.886195 }
 
-    //conditionally render icons based on receiverType
-    // if (this.props.locations.locations.receiverType == 'Personal') {
-    //   url: 'https://img.icons8.com/color/48/000000/orchid.png'
-    // } else if (this.props.locations.locations.receiverType == 'School') {
-    //   url: 'https://img.icons8.com/color/48/000000/school-building.png'
-    // } else if (this.props.locations.locations.receiverType == 'Community') {
-    //   url: 'https://img.icons8.com/color/48/000000/sprout.png'
-    // } else {
-    //   url: 'https://img.icons8.com/color/48/000000/field.png'
+    // conditionally render icons based on receiverType
+    // const url = () => {
+    //   if (this.props.locations.locations.receiverType === 'Personal Garden') {
+    //     return 'https://img.icons8.com/color/48/000000/orchid.png'
+    //   } else if (
+    //     this.props.locations.locations.receiverType === 'School Garden'
+    //   ) {
+    //     return 'https://img.icons8.com/color/48/000000/school-building.png'
+    //   } else if (
+    //     this.props.locations.locations.receiverType === 'Community Garden'
+    //   ) {
+    //     return 'https://img.icons8.com/color/48/000000/sprout.png'
+    //   } else {
+    //     return 'https://img.icons8.com/color/48/000000/field.png'
+    //   }
     // }
 
     // show all users actively accepting compost

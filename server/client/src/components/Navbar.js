@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import stars from '../static/durhamstars.png'
 import styled from 'styled-components'
+import logo from '../static/DDlogo.png'
+import brand from '../static/brand.png'
+import leaf from '../static/leaf.png'
 
 export default function Navbar() {
   return (
@@ -9,31 +11,19 @@ export default function Navbar() {
       className="navbar fixed-top navbar-expand-lg mb-3 shadow-sm"
       style={{ backgroundColor: 'white' }}
     >
-      <div className="container-fluid">
-        <div className="row" style={{ backgroundColor: '#00548f' }}>
-          <div className="col-1" style={{ backgroundColor: '#ef3e42' }} />
-          <div className="col-1" style={{ backgroundColor: '#ffcf47' }} />
-          <div
-            className="col-5 brand"
-            style={{
-              backgroundColor: '#00548f',
-              color: 'white',
-              textAlign: 'right',
-              fontSize: '25px',
-              letterSpacing: '1px',
-              fontFamily: 'Domine',
-              paddingTop: '3%'
-            }}
-          >
-            Divert Durham{' '}
+      <div className="container">
+        <div
+          className="row"
+          style={{ backgroundColor: '#065471', width: 'auto' }}
+        >
+          <div className="col-2">
+            {' '}
+            <img src={leaf} width="50px" height="50px" />
           </div>
-          <img
-            className="col-5"
-            src={stars}
-            alt="stars of Durham City flag"
-            width="250px"
-            height="100px"
-          />
+          <div className="col-10">
+            {' '}
+            <img src={brand} />
+          </div>
         </div>
       </div>
 
@@ -51,10 +41,6 @@ export default function Navbar() {
         <Link to="/Activity">
           <button className="col-4" style={buttonStyle}>
             Activity{' '}
-            <span className="badge badge-pill badge-success">
-              <small>new</small>
-              <span className="sr-only">new activity</span>
-            </span>
           </button>
         </Link>
         <Link to="/Profile">
