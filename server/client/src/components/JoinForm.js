@@ -12,6 +12,7 @@ export class JoinForm extends Component {
     firstName: '',
     lastName: '',
     home: '',
+    homeAddress: {},
     receiverType: '',
     dropOffInstructions: '',
     isAcceptingCompost: '',
@@ -23,27 +24,37 @@ export class JoinForm extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  // on submit, send POST request to server
-  onFormSubmit = e => {
-    e.preventDefault()
-
+  getCoordinatesForHome = async () => {
     const { home } = this.state
     let address = home
-    let convertedAddress = this.props.convertAddress(address)
-    console.log('convertedAddress', convertedAddress)
+    let convertedAddress = await this.props.convertAddress(address)
+    console.log('convertedAddress', convertedAddress.payload)
     this.setState({
-      homeAddress: convertedAddress.results[0].geometry.location
+      homeAddress: convertedAddress.payload
     })
+  }
 
-    if (this.state.droOff) {
+  getCoordinatesForDropOff = async () => {
+    if (this.state.dropOff) {
       const { dropOff } = this.state
-      let drop = { dropOff }
-      let convertedCoordinates = this.props.convertAddress(drop)
-      console.log('convertedCoordinates', convertedCoordinates)
+      let address = dropOff
+      let convertedCoordinates = await this.props.convertAddress(address)
+      console.log('convertedCoordinates', convertedCoordinates.payload)
       this.setState({
-        dropOffCoordinates: convertedCoordinates.results[0].geometry.location
+        dropOffCoordinates: convertedCoordinates.payload
       })
+    } else {
+      return
     }
+  }
+
+  // on submit, send POST request to server
+  onFormSubmit = async e => {
+    e.preventDefault()
+
+    await this.getCoordinatesForHome()
+
+    await this.getCoordinatesForDropOff()
 
     const {
       username,
@@ -83,13 +94,11 @@ export class JoinForm extends Component {
       email: '',
       firstName: '',
       lastName: '',
-      homeAddress: '',
+      home: '',
       receiverType: '',
-      dropOffLocation: '',
-
       dropOffInstructions: '',
       isAcceptingCompost: '',
-      dropOffCoordinates: ''
+      dropOff: ''
     })
   }
   render() {
@@ -169,9 +178,7 @@ export class JoinForm extends Component {
                       className="form-check-input"
                       type="radio"
                       name="receiverType"
-                      id="exampleRadios1"
                       value={this.state.receiverType}
-                      checked
                       onChange={this.onInputChange}
                     />
                     <img src="https://img.icons8.com/color/48/000000/orchid.png" />{' '}
@@ -182,7 +189,6 @@ export class JoinForm extends Component {
                       className="form-check-input"
                       type="radio"
                       name="receiverType"
-                      id="exampleRadios2"
                       value={this.state.receiverType}
                       onChange={this.onInputChange}
                     />{' '}
@@ -194,7 +200,6 @@ export class JoinForm extends Component {
                       className="form-check-input"
                       type="radio"
                       name="receiverType"
-                      id="exampleRadios2"
                       value={this.state.receiverType}
                       onChange={this.onInputChange}
                     />
@@ -206,7 +211,6 @@ export class JoinForm extends Component {
                       className="form-check-input"
                       type="radio"
                       name="receiverType"
-                      id="exampleRadios2"
                       value={this.state.receiverType}
                       onChange={this.onInputChange}
                     />
@@ -249,9 +253,7 @@ export class JoinForm extends Component {
                       className="form-check-input"
                       type="radio"
                       name="true"
-                      id="exampleRadios1"
                       value={this.state.isAcceptingCompost}
-                      checked
                       onChange={this.onInputChange}
                     />
                     Yes
@@ -261,7 +263,6 @@ export class JoinForm extends Component {
                       className="form-check-input"
                       type="radio"
                       name="false"
-                      id="exampleRadios2"
                       value={this.state.isAcceptingCompost}
                       onChange={this.onInputChange}
                     />
@@ -288,6 +289,11 @@ const inputStyle = {
   borderRadius: '5px'
 }
 
+// make our converted address from Redux store available to the component's props
+const mapStateToProps = state => {
+  return { address: state.address }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     createUser: newUserData => dispatch(createUser(newUserData)),
@@ -295,6 +301,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(JoinForm)

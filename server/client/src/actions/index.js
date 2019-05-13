@@ -37,9 +37,11 @@ export function createUser(newUserData) {
 export async function convertAddress(address) {
   const request = await axios.get(`${GEO_URL}address=${address}&key=${apiKey}`)
 
+  const convertedAddress = await request.data.results[0]
+
   return {
     type: CONVERT_ADDRESS,
-    payload: request
+    payload: convertedAddress.geometry.location
   }
 }
 // for reverse geocoding in the receiverDetailView

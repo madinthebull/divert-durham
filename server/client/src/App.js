@@ -4,7 +4,7 @@ import JoinForm from './components/JoinForm'
 import Login from './components/Login'
 import Home from './components/Home'
 import Info from './components/Info'
-import Notifications from './components/Notifications'
+import Activity from './components/Activity'
 import Profile from './components/Profile'
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -24,7 +24,7 @@ function App() {
           <Route exact path={'/'} component={Landing} />
           <Route exact path={'/home'} component={Home} />
           <Route exact path={'/info'} component={Info} />
-          <Route exact path={'/notifications'} component={Notifications} />
+          <Route exact path={'/activity'} component={Activity} />
           <Route exact path={'/profile'} component={Profile} />
           <Route exact path={'/logout'} component={Landing} />
           <Route exact path={'/login'} component={Login} />

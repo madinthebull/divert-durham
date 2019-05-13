@@ -21,100 +21,185 @@ class Profile extends Component {
       <React.Fragment>
         <Navbar />
         <div className="container" style={{ marginTop: '165px' }}>
-          <div className="mask show" />
-          <div className="form-container show">
-            <div className="form-card show">
+          <div className="form-container">
+            <div className="form-card">
               <div className="form-header-container">
                 <div className="form-header">
-                  <div className="form-name">edit profile</div>
+                  <div className="form-name">Your profile</div>
+                  <Link to="/">
+                    <button className="col-5 offset-8">
+                      {' '}
+                      Log Out
+                      <span role="img" aria-label="waving hand">
+                        👋🏽
+                      </span>
+                    </button>
+                  </Link>
                 </div>
               </div>
-              <form className="form-field-container">
+              <form
+                className="form-field-container"
+                onSubmit={this.onFormSubmit}
+              >
                 {' '}
-                <p className="">Username</p>
+                <p>Username</p>
                 <input
                   type="text"
                   name="username"
-                  className="form-field"
+                  className="form-control"
                   placeholder="Enter user name"
                   value={this.state.username}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
-                <p className="">email address</p>
+                <p>Email Address</p>
                 <input
                   type="email"
                   name="email"
-                  className="form-field"
+                  className="form-control"
                   placeholder="Enter email address"
                   value={this.state.email}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
-                <p className="">first name</p>
+                <p>FIrst Name</p>
                 <input
                   type="text"
                   name="firstName"
-                  className="form-field"
+                  className="form-control"
                   placeholder="Enter first name"
                   value={this.state.firstName}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
-                <p className="">last name</p>
+                <p>Last Name</p>
                 <input
                   type="text"
                   name="lastName"
-                  className="form-field"
+                  className="form-control"
                   placeholder="Enter last name"
                   value={this.state.lastName}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
-                <p className="">home address</p>
+                <p>Home Address</p>
                 <input
                   type="text"
-                  name="address"
-                  className="form-field"
+                  name="home"
+                  className="form-control"
                   placeholder="Enter address"
-                  value={this.state.address}
+                  value={this.state.home}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
-                <p className="">profile type</p>
-                <div
-                  className="btn-group"
-                  role="group"
-                  aria-label="Choose profile type"
-                  readOnly
-                >
-                  <button
-                    type="button"
-                    className="btn"
-                    value={this.state.profileType}
-                    name="profileType"
-                    style={{ backgroundColor: '#c8deea' }}
-                  >
-                    Giver
-                  </button>
-                  <button
-                    type="button"
-                    className="btn"
-                    value={this.state.profileType}
-                    name="profileType"
-                    style={{ backgroundColor: '#c8deea' }}
-                  >
-                    Reciever
-                  </button>
+                <hr />
+                <div>
+                  Only fill out the next section If you would like to be a
+                  receiver
                 </div>
+                <p className="">
+                  Please choose what best describes your drop off location
+                </p>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="receiverType"
+                    value={this.state.receiverType}
+                    onChange={this.onInputChange}
+                  />
+                  <img src="https://img.icons8.com/color/48/000000/orchid.png" />{' '}
+                  Personal Garden
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="receiverType"
+                    value={this.state.receiverType}
+                    onChange={this.onInputChange}
+                  />{' '}
+                  <img src="https://img.icons8.com/color/48/000000/sprout.png" />{' '}
+                  Community Garden
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="receiverType"
+                    value={this.state.receiverType}
+                    onChange={this.onInputChange}
+                  />
+                  <img src="https://img.icons8.com/color/48/000000/school-building.png" />{' '}
+                  School Garden
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="receiverType"
+                    value={this.state.receiverType}
+                    onChange={this.onInputChange}
+                  />
+                  <img src="https://img.icons8.com/color/48/000000/field.png" />{' '}
+                  Farm
+                </div>
+                <p>Drop Off Location</p>
+                <input
+                  type="text"
+                  name="dropOffLocation"
+                  className="form-control"
+                  placeholder="Enter name of your drop off location. Ex: 'Joe's Jungle', 'Seeds', 'Bluebird Farm'"
+                  value={this.state.droppOffLocation}
+                  style={inputStyle}
+                  onChange={this.onInputChange}
+                />
+                <p>Drop Off Address</p>
+                <input
+                  type="text"
+                  name="dropOff"
+                  className="form-control"
+                  placeholder="Enter address where you'd like scraps to be dropped off"
+                  value={this.state.dropOff}
+                  style={inputStyle}
+                  onChange={this.onInputChange}
+                />
+                <p>Drop Off Instructions</p>
+                <textarea
+                  rows="5"
+                  name="dropOffInstructions"
+                  className="form-control"
+                  placeholder="Enter drop off instructions"
+                  value={this.state.dropOffInstructions}
+                  style={inputStyle}
+                  onChange={this.onInputChange}
+                />
+                <p>Put my drop off location on the map</p>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="true"
+                    value={this.state.isAcceptingCompost}
+                    onChange={this.onInputChange}
+                  />
+                  Yes
+                </div>
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="false"
+                    value={this.state.isAcceptingCompost}
+                    onChange={this.onInputChange}
+                  />
+                  No
+                </div>
+                <hr />
                 <div className="form-footer-container">
-                  <Button />
+                  <button>Save</button>
                 </div>
               </form>
-              <Link to="/">
-                <button className="col-5">
-                  {' '}
-                  Log Out
-                  <span role="img" aria-label="waving hand">
-                    👋🏽
-                  </span>
-                </button>
-              </Link>
             </div>
           </div>
         </div>

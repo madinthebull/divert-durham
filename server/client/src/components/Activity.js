@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux'
 import _ from 'lodash'
 import moment from 'moment'
 
-export class Notifications extends Component {
+export class Activity extends Component {
   // when component mounts, all notifications are fetched
   componentDidMount() {
     this.props.fetchNotifications()
@@ -16,10 +16,13 @@ export class Notifications extends Component {
 
   renderNotifications() {
     if (this.props.notifications.notifications) {
-      //  return this.props.notifications.map(notification => {
+      console.log(
+        'this.props.notifications.notifcations',
+        this.props.notifications.notifications
+      )
       return _.map(this.props.notifications.notifications, notification => {
         return (
-          <React.Fragment>
+          <React.Fragment key={notification._id}>
             <div
               className="col-10 offset-1 shadow-sm"
               style={{
@@ -28,7 +31,6 @@ export class Notifications extends Component {
                 padding: '5px',
                 marginBottom: '15px'
               }}
-              key={notification._id}
             >
               <div style={{ float: 'right' }}>May 1</div>
               <div style={{ padding: '5px' }}>
@@ -42,7 +44,7 @@ export class Notifications extends Component {
             </div>
             {/* <div>{notification.giverId.username}</div> */}
             <div>{moment(notification.timeSent).fromNow()}</div>
-            <div>{notification.receiverId}</div>
+            <div>{notification.receiverId.username}</div>
             <div>{notification.onWay}</div>
             <div>{notification.delivered}</div>
           </React.Fragment>
@@ -89,4 +91,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Notifications)
+)(Activity)

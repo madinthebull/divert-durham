@@ -104,8 +104,8 @@ module.exports = function(app) {
   // get all notifications for the receiver
   app.get('/notifications/:user', (req, res, next) => {
     Notification.find({ receiverId: req.params.user })
-      // .populate('receiverId')
-      // .populate('giverId')
+      .populate('receiverId')
+      .populate('giverId')
       .exec((err, notifications) => {
         if (err) {
           console.error(err)

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import stars from '../static/durhamstars.png'
+import styled from 'styled-components'
+
 export default function Navbar() {
   return (
     <nav
@@ -46,9 +48,13 @@ export default function Navbar() {
             Info
           </button>
         </Link>
-        <Link to="/Notifications">
+        <Link to="/Activity">
           <button className="col-4" style={buttonStyle}>
-            Notifications
+            Activity{' '}
+            <span className="badge badge-pill badge-success">
+              <small>new</small>
+              <span className="sr-only">new activity</span>
+            </span>
           </button>
         </Link>
         <Link to="/Profile">
