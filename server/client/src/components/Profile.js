@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
-import Button from './Button'
 import { Link } from 'react-router-dom'
 import Footer from './Footer'
 import styled from 'styled-components'

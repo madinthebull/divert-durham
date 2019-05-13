@@ -22,7 +22,7 @@ export class ReceiverDetailView extends Component {
   state = {
     onWay: false,
     delivered: false,
-    giverId: '5cd6fdba87f9428302daeaa1',
+    giverId: '5cd6fd798fd82782ffcafd9c',
     receiverId: '5cd6fd3418f45e82f9883902',
     timeSent: ''
   }

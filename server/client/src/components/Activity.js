@@ -27,23 +27,20 @@ export class Activity extends Component {
               <div
                 className="col-10 offset-1 shadow-sm"
                 style={{
-                  backgroundColor: '#99C5B9',
                   borderRadius: '5px',
                   padding: '5px',
-                  marginBottom: '15px'
+                  marginBottom: '15px',
+                  backgroundColor: 'white',
+                  opacity: '0.9'
                 }}
               >
                 <div style={{ float: 'right', paddingRight: '8px' }}>
-                  {' '}
-                  {moment(notification.timeSent).format('MMM Do')}
-                </div>
-                <div style={{ padding: '5px' }}>
-                  {' '}
-                  <strong>{notification.receiverId.username}</strong> is on
-                  their way!
-                </div>
-                <div>
                   <small>-{moment(notification.timeSent).fromNow()}</small>
+                </div>
+                <div style={{ padding: '5px', color: '#065471' }}>
+                  {' '}
+                  <strong>{notification.giverId.username}</strong> is on their
+                  way!
                 </div>
               </div>
             </React.Fragment>
@@ -54,22 +51,20 @@ export class Activity extends Component {
               <div
                 className="col-10 offset-1 shadow-sm"
                 style={{
-                  backgroundColor: '#FFD689',
                   borderRadius: '5px',
                   padding: '5px',
-                  marginBottom: '15px'
+                  marginBottom: '15px',
+                  backgroundColor: 'white',
+                  opacity: '0.9'
                 }}
               >
                 <div style={{ float: 'right', paddingRight: '8px' }}>
-                  {moment(notification.timeSent).format('MMM Do')}
+                  <small>-{moment(notification.timeSent).fromNow()}</small>
                 </div>
-                <div style={{ padding: '5px' }}>
+                <div style={{ padding: '5px', color: '#067154' }}>
                   {' '}
-                  <strong>{notification.receiverId.username}</strong> has
+                  <strong>{notification.giverId.username}</strong> has
                   delivered.
-                </div>
-                <div>
-                  <small> -{moment(notification.timeSent).fromNow()}</small>
                 </div>
               </div>
               {/* <div>{notification.giverId.username}</div> */}
@@ -97,7 +92,13 @@ export class Activity extends Component {
 
 const notificationsListStyle = {
   overflowY: 'scroll',
-  marginTop: '120px'
+  marginTop: '120px',
+  paddingTop: '30px',
+  backgroundImage: 'url(http://www.powerindirt.com/images/1.jpg)',
+  backgroundSize: 'fill',
+  overflow: 'hidden',
+  backgroundPosition: 'center',
+  height: '600px'
 }
 
 // make all of our notifications from Redux store available to the component's props

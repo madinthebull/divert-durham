@@ -22,8 +22,8 @@ function App() {
         <div className="container" />
         <Switch>
           <Route exact path={'/'} component={Landing} />
-          <Route exact path={'/home'} component={Home} />
-          <Route exact path={'/info'} component={Info} />
+          <Route exact path={'/home'} component={Info} />
+          <Route exact path={'/map'} component={Home} />
           <Route exact path={'/activity'} component={Activity} />
           <Route exact path={'/profile'} component={Profile} />
           <Route exact path={'/logout'} component={Landing} />

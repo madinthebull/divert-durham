@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import logo from '../static/DDlogo.png'
+
 import brand from '../static/brand.png'
 import leaf from '../static/leaf.png'
 
@@ -18,11 +17,16 @@ export default function Navbar() {
         >
           <div className="col-2">
             {' '}
-            <img src={leaf} width="50px" height="50px" />
+            <img
+              src={leaf}
+              alt="Diver Durham leaf logo"
+              width="50px"
+              height="50px"
+            />
           </div>
-          <div className="col-10">
+          <div className="col-9" style={{ marginLeft: '5px' }}>
             {' '}
-            <img src={brand} />
+            <img src={brand} alt="Divert Durham logo text" />
           </div>
         </div>
       </div>
@@ -33,9 +37,9 @@ export default function Navbar() {
             Home
           </button>
         </Link>
-        <Link to="/Info">
+        <Link to="/Map">
           <button className="col-2" style={buttonStyle}>
-            Info
+            Map
           </button>
         </Link>
         <Link to="/Activity">
