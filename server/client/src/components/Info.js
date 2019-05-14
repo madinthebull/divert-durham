@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import logo from '../static/DDlogo.png'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export class Info extends Component {
   render() {
@@ -24,7 +26,7 @@ export class Info extends Component {
             }}
           >
             <strong style={{ padding: '10px 0px 0px 10px' }}>
-              compost and <br />
+              compost plus <br />
               community can keep
               <br /> food waste out <br />
               of here
@@ -100,9 +102,16 @@ export class Info extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-8 mt-3 mb-3" style={{ textAlign: 'center' }}>
+            <div className="col-8 mt-3 mb-3">
               <small>
-                Keep unneccessary food waste out of Durham's waste system
+                {' '}
+                Divert Durham allows City of Durham residents to reduce food
+                waste and increase social capital through ffree neighborhood
+                based compost collection. Residents can see home gardeners and
+                community/school gardens nearby and notify them when they're
+                ready to drop off raw materials. Keep unneccessary food waste
+                out of Triangle landfills - and get to know your neighbors while
+                you're at it.
               </small>
             </div>
             <div className="col-4 mt-3 mb-3">
@@ -113,6 +122,12 @@ export class Info extends Component {
                 height="75px"
                 style={{ borderRadius: '50%' }}
               />
+
+              <Link to="/">
+                <Save>
+                  <small>Get Started</small>
+                </Save>
+              </Link>
             </div>
           </div>
           <div className="row">
@@ -172,5 +187,12 @@ export class Info extends Component {
     )
   }
 }
+
+const Save = styled.button`
+  background-color: #ffbf46;
+  margin: 20px 3px 20px 3px;
+  border-radius: 5px;
+  border: transparent;
+`
 
 export default Info

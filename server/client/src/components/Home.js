@@ -10,15 +10,25 @@ export class Home extends Component {
       <React.Fragment>
         <Navbar />
         <div className="container" style={{ marginTop: '120px' }}>
-          <div>
-            <img
-              src={logo}
-              width="100px"
-              height="100px"
-              style={{ borderRadius: '50%' }}
-              alt="Divert Durham Logo"
-            />
-            <Map />
+          <div className="row">
+            <div className="col-3">
+              <img
+                src={logo}
+                width="100px"
+                height="100px"
+                style={{ borderRadius: '50%', marginBottom: '15px' }}
+                alt="Divert Durham Logo"
+              />
+            </div>
+            <div className="col-9" style={{ textAlign: 'center' }}>
+              <h6 style={{ verticalAlign: 'center', color: '#99C5B9' }}>
+                Start Composting Now!
+              </h6>
+            </div>
+          </div>
+          <div className="row ml-2">
+            {' '}
+            <Map />{' '}
           </div>
         </div>
         <Footer />

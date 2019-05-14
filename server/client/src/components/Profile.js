@@ -8,12 +8,15 @@ class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: 'madinthebull',
-      email: 'mcstreilein@gmail.com',
-      firstName: 'Madeline',
-      lastName: 'Streilein',
-      address: '915B Exum Street Durham NC 27701',
-      profileType: 'Giver'
+      username: 'PlaidshirtLumberjack',
+      email: 'plaid@gmail.com',
+      firstName: 'Aaron',
+      lastName: 'Hayslip',
+      home: '400 North Duke Street, Durham, NC',
+      receiverType: 'School Garden',
+      dropOffLocation: 'Durham School of the Arts Garden',
+      isAcceptingCompost: 'true',
+      dropOff: '400 North Duke Street, Durham, NC'
     }
   }
   render() {
@@ -24,7 +27,9 @@ class Profile extends Component {
           <div className="form-container">
             <div className="form-card">
               <div className="form-header">
-                <div className="form-name">Your profile</div>
+                <h5 className="form-name text-center">
+                  View or Edit Your Profile
+                </h5>
               </div>
             </div>
             <form className="form-field-container" onSubmit={this.onFormSubmit}>

@@ -115,17 +115,11 @@ export class JoinForm extends Component {
             <div className="form-container show">
               <div className="form-card show">
                 <div className="form-header">
-                  <div className="form-name">Join Divert Durham</div>
+                  <h5 className="form-name text-center">Join Divert Durham</h5>
                   <form
                     className="form-field-container"
                     onSubmit={this.onFormSubmit}
                   >
-                    <button style={{ float: 'right' }}>
-                      <i
-                        className="far fa-times-circle"
-                        onClick={this.props.toggle}
-                      />
-                    </button>{' '}
                     <p>Username</p>
                     <input
                       type="text"
@@ -293,8 +287,11 @@ export class JoinForm extends Component {
                     </div>
                     <hr />
                     <div className="form-footer-container">
+                      <Link to="/">
+                        <Save style={{ float: 'left' }}>Cancel</Save>
+                      </Link>
                       <Link to="/home">
-                        <Save>Submit</Save>
+                        <Save style={{ float: 'right' }}>Submit</Save>
                       </Link>
                     </div>
                   </form>
@@ -314,8 +311,8 @@ const inputStyle = {
 }
 
 const Save = styled.button`
-  background-color: #99c5b9;
-  margin: 3px;
+  background-color: 'white';
+  margin: 3px 3px 20px 3px;
   border-radius: 5px;
   border: transparent;
 `

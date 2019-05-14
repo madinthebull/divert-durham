@@ -61,7 +61,7 @@ export function convertCoordinates(dropOffCoordinates) {
 
 // get all notifications for the logged in user
 export function fetchNotifications() {
-  const request = axios.get(`${ROOT_URL}/notifications/${userId2}`)
+  const request = axios.get(`${ROOT_URL}/notifications/${userId}`)
 
   return {
     type: FETCH_NOTIFICATIONS,
