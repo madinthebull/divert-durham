@@ -95,7 +95,10 @@ class Profile extends Component {
                   value={this.state.receiverType}
                   onChange={this.onInputChange}
                 />
-                <img src="https://img.icons8.com/color/48/000000/orchid.png" />{' '}
+                <img
+                  src="https://img.icons8.com/color/48/000000/orchid.png"
+                  alt="personal garden icon"
+                />{' '}
                 Personal Garden
               </div>
               <div className="form-check">
@@ -106,7 +109,10 @@ class Profile extends Component {
                   value={this.state.receiverType}
                   onChange={this.onInputChange}
                 />{' '}
-                <img src="https://img.icons8.com/color/48/000000/sprout.png" />{' '}
+                <img
+                  src="https://img.icons8.com/color/48/000000/sprout.png"
+                  alt="community garden icon"
+                />{' '}
                 Community Garden
               </div>
               <div className="form-check">
@@ -117,7 +123,10 @@ class Profile extends Component {
                   value={this.state.receiverType}
                   onChange={this.onInputChange}
                 />
-                <img src="https://img.icons8.com/color/48/000000/school-building.png" />{' '}
+                <img
+                  src="https://img.icons8.com/color/48/000000/school-building.png"
+                  alt="school icon"
+                />{' '}
                 School Garden
               </div>
               <div className="form-check">
@@ -128,7 +137,10 @@ class Profile extends Component {
                   value={this.state.receiverType}
                   onChange={this.onInputChange}
                 />
-                <img src="https://img.icons8.com/color/48/000000/field.png" />{' '}
+                <img
+                  src="https://img.icons8.com/color/48/000000/field.png"
+                  alt="farm icon"
+                />{' '}
                 Farm
               </div>
               <p>Drop Off Location</p>

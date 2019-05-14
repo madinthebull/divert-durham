@@ -71,7 +71,10 @@ export class MapContainer extends Component {
 
   render() {
     // show marker for the user's home address
-    const coords = { lat: 36.011367, lng: -78.886195 }
+    const coords = {
+      lat: 35.99505,
+      lng: -78.90239
+    }
 
     // conditionally render icons based on receiverType
     // const url = () => {

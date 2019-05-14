@@ -6,6 +6,11 @@ export class Login extends Component {
     username: '',
     password: ''
   }
+
+  // as data is entered, capture in the state
+  onInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
   render() {
     return (
       <div className="container" style={{ marginTop: '200px' }}>
@@ -30,6 +35,7 @@ export class Login extends Component {
                   placeholder="Enter user name"
                   value={this.state.username}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
                 <p className="">password</p>
                 <input
@@ -39,6 +45,7 @@ export class Login extends Component {
                   placeholder="Enter password"
                   value={this.state.password}
                   style={inputStyle}
+                  onChange={this.onInputChange}
                 />
               </form>
             </div>

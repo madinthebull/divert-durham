@@ -17,7 +17,10 @@ const ROOT_URL = 'http://localhost:8000'
 const GEO_URL = 'https://maps.googleapis.com/maps/api/geocode/json?'
 
 // hardcode logged in user
-const userId = '5cd6fd3418f45e82f9883902'
+//Sean - giver at 110 Corcoran Street
+const userId = '5cd6fdba87f9428302daeaa1'
+//Aaron - receiver at 400 north Duke Street
+const userId2 = '5cda039b6eddc2776da9972c'
 
 // post to db when a user joins Divert Durham
 export function createUser(newUserData) {
@@ -58,7 +61,7 @@ export function convertCoordinates(dropOffCoordinates) {
 
 // get all notifications for the logged in user
 export function fetchNotifications() {
-  const request = axios.get(`${ROOT_URL}/notifications/${userId}`)
+  const request = axios.get(`${ROOT_URL}/notifications/${userId2}`)
 
   return {
     type: FETCH_NOTIFICATIONS,
